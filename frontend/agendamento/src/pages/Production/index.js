@@ -16,7 +16,7 @@ function Production() {
                         <h1 className="ms-2">Agendamentos</h1>
                     </div>
 
-                    <hr className="col-3 col-md-2 mb-3" />
+                    <hr className="col-3 col-md-4 mb-3" />
 
 
                     <div id="tableID">
@@ -93,7 +93,7 @@ function Production() {
                         <h1 className="ms-2">Usuários Cadastrados</h1>
                     </div>
 
-                    <hr className="col-3 col-md-2 mb-3" />
+                    <hr className="col-3 col-md-5 mb-3" />
 
 
                     <div id="tableID">
@@ -164,7 +164,7 @@ function Production() {
                         <h1 className="ms-2">Unidade de Saúde Cadastradas</h1>
                     </div>
 
-                    <hr className="col-3 col-md-2 mb-3" />
+                    <hr className="col-3 col-md-7 mb-3" />
 
 
                     <div id="tableID">
