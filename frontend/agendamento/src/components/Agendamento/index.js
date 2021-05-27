@@ -39,8 +39,8 @@ function Agendamento() {
                             {/* <form className ="needs-validation" > */}
                             <div className="row g-3">
                                 <div className="col-sm-6">
-                                    <label for="firstName" className="form-label">Nome</label>
-                                    <input type="text" className="form-control" id="firstName" placeholder="" value="" required />
+                                    <label for="firstName" className="form-label">Nome </label>
+                                    <input type="text" className="form-control" id="firstName" placeholder=""  required />
                                     <div classNameN="invalid-feedback">
                                         Valid first name is required.
                                     </div>
@@ -48,7 +48,7 @@ function Agendamento() {
 
                                 <div className="col-sm-3">
                                     <label for="lastName" className="form-label">CPF</label>
-                                    <input type="text" className="form-control" id="lastName" placeholder="" value="" required />
+                                    <input type="text" className="form-control" id="lastName" placeholder="" required />
                                     <div className="invalid-feedback">
                                         Valid last name is required.
                                     </div>

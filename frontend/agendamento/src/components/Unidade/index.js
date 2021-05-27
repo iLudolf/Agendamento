@@ -17,24 +17,14 @@ function Unidade() {
                                 <form className="needs-validation" >
                                     <div className="row g-3">
                                         <div className="col-sm-6">
-                                            <label for="firstName" className="form-label">Nome</label>
+                                            <label for="firstName" className="form-label">Nome da unidade</label>
                                             <input type="text" className="form-control" id="firstName" placeholder="" required />
-                                            <div classNameN="invalid-feedback">
-                                                Valid first name is required.
-                                            </div>
-                                        </div>
-
-                                        <div className="col-sm-3">
-                                            <label for="CPF" className="form-label">CPF</label>
-                                            <input type="text" className="form-control" id="cpf" placeholder="(99) 99999-9999" required />
-                                            <div className="invalid-feedback">
-                                                Valid last name is required.
-                                            </div>
-                                        </div>
+                                            
+                                        </div>                                  
 
 
                                         <div className="col-sm-3">
-                                            <label for="username" className="form-label">Celular</label>
+                                            <label for="username" className="form-label">Telefone</label>
                                             <div className="input-group has-validation">
                                                 <span className="input-group-text">+55</span>
                                                 <input type="text" className="form-control" id="Telefone" placeholder="Celular" required />
@@ -44,24 +34,21 @@ function Unidade() {
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-3" >
-                                            <label for="state" class="form-label">Data de Nascimento</label>
-                                            <input type="date" name="bday" min="1000-01-01"
-                                                max="3000-12-31" class="form-control" />
-                                        </div>
-
-                                        <div className="col-md-3">
-                                            <label for="country" className="form-label">Sexo <span className="text-muted">(Optional)</span></label>
-                                            <select className="form-select" id="country" required>
-                                                <option value="">Escolher...</option>
-                                                <option>Masculino</option>
-                                                <option>Feminino</option>
-                                            </select>
+                                        <div className="col-sm-3">
+                                            <label for="email" className="form-label">CEP</label>
+                                            <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
                                             <div className="invalid-feedback">
-                                                Please select a valid country.
+                                                Please enter a valid email address for shipping updates.
                                             </div>
                                         </div>
 
+                                        <div className="col-sm-6">
+                                            <label for="email" className="form-label">Endereço</label>
+                                            <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                            <div className="invalid-feedback">
+                                                Please enter a valid email address for shipping updates.
+                                            </div>
+                                        </div>
 
                                         <div className="col-sm-6">
                                             <label for="email" className="form-label">Email</label>
@@ -70,6 +57,13 @@ function Unidade() {
                                                 Please enter a valid email address for shipping updates.
                                             </div>
                                         </div>
+
+                                        <div className="col-sm-15">
+                                            <label for="exampleFormControlTextarea1" className="form-label">Descrição</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+
+                            
 
                                         <div className="col-md-6">
                                             <label for="state" className="form-label">Unidade de Saúde</label>
@@ -82,27 +76,6 @@ function Unidade() {
                                             </div>
                                         </div>
 
-
-
-
-
-                                        <div className="col-md-3">
-                                            <label for="country" className="form-label">Gropo Prioritario</label>
-                                            <select className="form-select" id="country" required>
-                                                <option value="">Escolher...</option>
-                                                <option>Sim</option>
-                                                <option>Não</option>
-                                            </select>
-                                            <div className="invalid-feedback">
-                                                Please select a valid country.
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-3" >
-                                            <label for="state" class="form-label">Data</label>
-                                            <input type="date" name="bday" min="1000-01-01"
-                                                max="3000-12-31" class="form-control" />
-                                        </div>
 
 
                                     </div>
@@ -122,7 +95,7 @@ function Unidade() {
                                     <hr className="my-4" />
 
 
-                                    <button type="button" type="submit" class="btn btn-primary ">Enviar</button>
+                                    <button type="button" type="submit" class="btn btn-primary ">Registrar</button>
                                     <button type="button" class="btn btn-secondary mx-2">Buscar</button>
 
 
