@@ -74,7 +74,7 @@ function AgendamentoProd() {
 
                                 <div className="col-sm-3">
                                     <label for="email" className="form-label">Logradouro/Nome</label>
-                                    <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                    <input type="email" className="form-control" id="Logradouro" placeholder="seu@examplo.com" />
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -82,7 +82,7 @@ function AgendamentoProd() {
 
                                 <div className="col-sm-3">
                                     <label for="email" className="form-label">Bairro/Distrito</label>
-                                    <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                    <input type="email" className="form-control" id="Bairro" placeholder="seu@examplo.com" />
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -90,7 +90,7 @@ function AgendamentoProd() {
 
                                 <div className="col-sm-3">
                                     <label for="email" className="form-label">Localidade/UF</label>
-                                    <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                    <input type="email" className="form-control" id="Localidade" placeholder="seu@examplo.com" />
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -99,7 +99,7 @@ function AgendamentoProd() {
                                
                                 <div className="col-sm-3">
                                     <label for="email" className="form-label">CEP</label>
-                                    <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                    <input type="email" className="form-control" id="CEP" placeholder="seu@examplo.com" />
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -125,9 +125,9 @@ function AgendamentoProd() {
                                 <div className="col-md-3">
                                     <label for="country" className="form-label">Gropo Prioritario</label>
                                     <select className="form-select" id="gropoPrioritario" required>
-                                        <option value="">Escolher...</option>
-                                        <option>Sim</option>
-                                        <option>Não</option>
+                                        <option >Escolher...</option>
+                                        <option value="true">Sim</option>
+                                        <option value="false">Não</option>
                                     </select>
                                     <div className="invalid-feedback">
                                         Please select a valid country.
@@ -204,6 +204,8 @@ function pegaDados() {
     let dataNascimento = document.getElementById('DatadeNascimento').value;
     let telefonePessoa = document.getElementById('Telefone').value;
     let grupoPrioritario = document.getElementById('gropoPrioritario').value;
+    let endereco = 'Logradouro/Nome: ' +document.getElementById('Logradouro').value + ' Bairro/Distrito: ' + document.getElementById('Bairro').value + ' Localidade/UF: ' + document.getElementById('Localidade').value + ' CEP: ' + document.getElementById('CEP').value;
+    let email = document.getElementById('email').value;
 
 
     var data = {
@@ -212,6 +214,8 @@ function pegaDados() {
         "data_nascimento": dataNascimento,
         "telefone_pessoa": telefonePessoa,
         "grupo_prioritario": grupoPrioritario,
+        "endereço_pessoa": endereco,
+        "email_pessoa": email
     }
 
     return data;
