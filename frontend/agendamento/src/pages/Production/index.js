@@ -7,7 +7,7 @@ import NavbarProd from '../../components/NavbarProd';
 
 function Production() {
 
-    const API_URL = `http://localhost:3443/pessoas/`;
+    const API_URL = `http://localhost:3001/pessoas/`;
 
     const [recipes, setRecipes] = useState([]);
 

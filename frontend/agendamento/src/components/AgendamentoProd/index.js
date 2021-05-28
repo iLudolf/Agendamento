@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './styles.css';
 
 function AgendamentoProd() {
@@ -163,7 +163,7 @@ function AgendamentoProd() {
 
 
 
-                            {/* </form> */}
+                        
                         </div>
                     </div>
                 </main>
@@ -183,7 +183,7 @@ function AgendamentoProd() {
 
 const enviarDados = async () => {
 
-    const API_URL = `http://localhost:3443/pessoas/`;
+    const API_URL = `http://localhost:3001/pessoas/`;
     const response = await fetch(API_URL, {
         method: 'POST',
         headers: {

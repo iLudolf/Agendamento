@@ -7,7 +7,7 @@ const app = express();
 
 
 
-const port = 3443;
+const port = 3001;
 const hostname = 'localhost';
 
 
@@ -15,7 +15,9 @@ const hostname = 'localhost';
 
 //Rotas
 const defaultRoutes = require('./routes/default-routes');
-const ramaisRoutes = require('./routes/pessoa-routes');
+const pessoaRoutes = require('./routes/pessoa-routes');
+const unidadeRoutes = require('./routes/unidade-routes');
+const agendamentoRoutes = require('./routes/agendamento-routes');
 
 
 //Parsing do conteúdo das requisições 
@@ -28,7 +30,9 @@ app.use(cors());
 
 
 app.use('/', defaultRoutes);
-app.use('/pessoas/', ramaisRoutes);
+app.use('/pessoas/', pessoaRoutes);
+app.use('/unidade/', unidadeRoutes);
+app.use('/agendamento/', agendamentoRoutes);
 
 app.listen(port, hostname, () => {
   console.log(`Servidor rodando no endereço: http://${hostname}:${port}\n\n`);
