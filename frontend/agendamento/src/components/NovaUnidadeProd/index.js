@@ -1,9 +1,12 @@
 import './styles.css';
 
-function UnidadeProd() {
+import NavbarProd from '../NavbarProd';
+
+function NovaUnidadeProd() {
 
     return (
         <>
+        <NavbarProd />
             <div className="container">
                 <main>
                     <div className="py-5 text-center">
@@ -155,4 +158,4 @@ function pegaDados() {
     return data;
 }
 
-export default UnidadeProd;
+export default NovaUnidadeProd;

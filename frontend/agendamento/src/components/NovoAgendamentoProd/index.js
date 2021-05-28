@@ -1,10 +1,41 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './styles.css';
 
-function AgendamentoProd() {
+import NavbarProd from '../NavbarProd';
+
+function NovoAgendamentoProd() {
+
+    const [unidades, setunidades] = useState([]);
+   
+    useEffect(() => {        
+        loadUnidades();
+    }, []);
+
+    const loadUnidades = async () => {
+        const API_URL = `http://localhost:3001/unidade/`;
+        const response = await fetch(API_URL, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        setunidades(data.Unidades);   
+    }
+
+    var dadosUnidades = unidades.map(function (registros) {
+        return (      
+            <>     
+            <option>{registros.nome_unidade}</option>
+            </>
+        ); //retorna o registro 
+    });
+
 
     return (
         <>
+        <NavbarProd />
             <div className="container">
                 <main>
                     <div className="py-5 text-center">
@@ -111,7 +142,7 @@ function AgendamentoProd() {
                                     <label for="state" className="form-label">Unidade de Saúde</label>
                                     <select className="form-select" id="state" required>
                                         <option value="">Escolher...</option>
-                                        <option>California</option>
+                                       {dadosUnidades}
                                     </select>
                                     <div className="invalid-feedback">
                                         Please provide a valid state.
@@ -221,4 +252,4 @@ function pegaDados() {
     return data;
 }
 
-export default AgendamentoProd;
+export default NovoAgendamentoProd;

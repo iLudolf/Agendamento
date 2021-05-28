@@ -11,9 +11,9 @@ function Production() {
     const [agendamento, setagendamento] = useState([]);
 
 
-    useEffect(() => {
-        loadDadosPessoas();
+    useEffect(() => {        loadDadosPessoas();
         loadDadosUnidades();
+      
     }, []);
 
     const loadDadosPessoas = async () => {
@@ -57,7 +57,7 @@ function Production() {
         setagendamento(data.Unidades);
         // console.log(data.Pessoas);
     }
-    
+
 
     var dadosUnidades = agendamento.map(function (registros) {
         return (
@@ -66,13 +66,12 @@ function Production() {
                 <td>{registros.descricao_unidade}</td>
                 <td>{registros.endereço_unidade}</td>
                 <td>{registros.telefone_unidade}</td>
-                <td>{registros.email_unidade}</td>              
+                <td>{registros.email_unidade}</td>
             </tr>
         ); //retorna o registro 
     });
-    
 
- 
+
 
 
     return (
@@ -132,18 +131,16 @@ function Production() {
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr className="table-title">
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">CPF</th>
-                                    <th scope="col">Data de nascimento</th>
-                                    <th scope="col">Telefone</th>
-                                    <th scope="col">Grupo Prioritario</th>
-                                    <th scope="col">Endereço</th>
-                                    <th scope="col">Email</th>
+                                    <th scope="col">Usuario</th>
+                                    <th scope="col">Unidade de saude</th>
+                                    <th scope="col">Data do Agendamento</th>
+                                    <th scope="col">Necessidades Especiais</th>
+                                    <th scope="col">Observações Agendamento</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                {dadosPessoas}
+                                {/* {dadosPessoas} */}
 
 
 
@@ -278,8 +275,8 @@ function Production() {
                                     <th scope="col">Email</th>
                                 </tr>
                             </thead>
-                            <tbody>                               
-                                    {dadosUnidades}                               
+                            <tbody>
+                                {dadosUnidades}
                             </tbody>
                         </table>
                     </div>
