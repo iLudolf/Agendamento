@@ -1,11 +1,59 @@
+import React, { useState, useEffect } from 'react';
+
 import './styles.css';
 
 import NavbarProd from '../../components/NavbarProd';
 
 
 function Production() {
+
+    const API_URL = `http://localhost:3443/pessoas/`;
+
+    const [recipes, setRecipes] = useState([]);
+
+    useEffect(() => {
+        loadData();
+    }, []);
+
+    const loadData = async () => {
+        const response = await fetch(API_URL, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        setRecipes(data.Pessoas);
+        // console.log(data.Pessoas);
+    }
+
+    var test = recipes.map(function (registros) {
+        return (
+
+            <tr key={registros.id}>
+                <td>{registros.nome_pessoa}</td>
+                <td>{registros.cpf_pessoa}</td>
+                <td>{registros.data_nascimento}</td>
+                <td>{registros.telefone_pessoa}</td>
+                <td>{registros.grupo_prioritario ? 'Sim' : 'Não'}</td>
+                <td>{registros.endereço_pessoa}</td>
+                <td>{registros.email_pessoa}</td>
+            </tr>
+
+
+
+
+
+
+        ); //retorna o registro 
+    });
+
+
     return (
         <>
+
+
             <NavbarProd />
             <div class="b-example-divider"></div>
             <div className="centralizar-conteudo">
@@ -60,24 +108,20 @@ function Production() {
                             <thead>
                                 <tr className="table-title">
                                     <th scope="col">Nome</th>
-                                    <th scope="col">Setor</th>
-                                    <th scope="col">Unidade</th>
-                                    <th scope="col">Ramal</th>
+                                    <th scope="col">CPF</th>
+                                    <th scope="col">Data de nascimento</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Grupo Prioritario</th>
+                                    <th scope="col">Endereço</th>
+                                    <th scope="col">Email</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th >Adm Peças</th>
-                                    <td>Peças</td>
-                                    <td>Teixeira de Freitas</td>
-                                    <td>6696</td>
-                                </tr>
-                                <tr>
-                                    <th >Israel Ludolf</th>
-                                    <td>Analista de Suporte/TI</td>
-                                    <td>Viana</td>
-                                    <td>1973</td>
-                                </tr>
+
+                                {test}
+
+
+
                             </tbody>
                         </table>
                     </div>
@@ -131,24 +175,19 @@ function Production() {
                             <thead>
                                 <tr className="table-title">
                                     <th scope="col">Nome</th>
-                                    <th scope="col">Setor</th>
-                                    <th scope="col">Unidade</th>
-                                    <th scope="col">Ramal</th>
+                                    <th scope="col">CPF</th>
+                                    <th scope="col">Data de nascimento</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Grupo Prioritario</th>
+                                    <th scope="col">Endereço</th>
+                                    <th scope="col">Email</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th >Adm Peças</th>
-                                    <td>Peças</td>
-                                    <td>Teixeira de Freitas</td>
-                                    <td>6696</td>
-                                </tr>
-                                <tr>
-                                    <th >Israel Ludolf</th>
-                                    <td>Analista de Suporte/TI</td>
-                                    <td>Viana</td>
-                                    <td>1973</td>
-                                </tr>
+
+
+                                {test}
+
                             </tbody>
                         </table>
                     </div>

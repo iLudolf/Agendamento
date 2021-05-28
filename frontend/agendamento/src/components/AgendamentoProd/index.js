@@ -1,28 +1,7 @@
+import React, { useEffect } from 'react';
 import './styles.css';
 
-function Agendamento() {
-
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-    })()
-
+function AgendamentoProd() {
 
     return (
         <>
@@ -40,7 +19,7 @@ function Agendamento() {
                             <div className="row g-3">
                                 <div className="col-sm-6">
                                     <label for="firstName" className="form-label">Nome </label>
-                                    <input type="text" className="form-control" id="firstName" placeholder=""  required />
+                                    <input type="text" className="form-control" id="name" placeholder="" required />
                                     <div classNameN="invalid-feedback">
                                         Valid first name is required.
                                     </div>
@@ -48,7 +27,7 @@ function Agendamento() {
 
                                 <div className="col-sm-3">
                                     <label for="lastName" className="form-label">CPF</label>
-                                    <input type="text" className="form-control" id="lastName" placeholder="" required />
+                                    <input type="text" className="form-control" id="cpf" placeholder="" required />
                                     <div className="invalid-feedback">
                                         Valid last name is required.
                                     </div>
@@ -68,7 +47,7 @@ function Agendamento() {
 
                                 <div class="col-sm-3" >
                                     <label for="state" class="form-label">Data de Nascimento</label>
-                                    <input type="date" name="bday" min="1000-01-01"
+                                    <input type="date" name="bday" id="DatadeNascimento" min="1000-01-01"
                                         max="3000-12-31" class="form-control" />
                                 </div>
 
@@ -93,6 +72,41 @@ function Agendamento() {
                                     </div>
                                 </div>
 
+                                <div className="col-sm-3">
+                                    <label for="email" className="form-label">Logradouro/Nome</label>
+                                    <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                    <div className="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+
+                                <div className="col-sm-3">
+                                    <label for="email" className="form-label">Bairro/Distrito</label>
+                                    <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                    <div className="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+
+                                <div className="col-sm-3">
+                                    <label for="email" className="form-label">Localidade/UF</label>
+                                    <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                    <div className="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+
+                               
+                                <div className="col-sm-3">
+                                    <label for="email" className="form-label">CEP</label>
+                                    <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                    <div className="invalid-feedback">
+                                        Please enter a valid email address for shipping updates.
+                                    </div>
+                                </div>
+
+                              
+
                                 <div className="col-md-6">
                                     <label for="state" className="form-label">Unidade de Saúde</label>
                                     <select className="form-select" id="state" required>
@@ -110,7 +124,7 @@ function Agendamento() {
 
                                 <div className="col-md-3">
                                     <label for="country" className="form-label">Gropo Prioritario</label>
-                                    <select className="form-select" id="country" required>
+                                    <select className="form-select" id="gropoPrioritario" required>
                                         <option value="">Escolher...</option>
                                         <option>Sim</option>
                                         <option>Não</option>
@@ -144,7 +158,7 @@ function Agendamento() {
                             <hr className="my-4" />
 
 
-                            <button type="button" class="btn btn-primary">Enviar</button>
+                            <button type="button" class="btn btn-primary" onClick={() => enviarDados()}>Enviar</button>
                             <button type="button" class="btn btn-secondary mx-2">Buscar</button>
 
 
@@ -161,4 +175,46 @@ function Agendamento() {
     );
 }
 
-export default Agendamento;
+
+
+
+
+
+
+const enviarDados = async () => {
+
+    const API_URL = `http://localhost:3443/pessoas/`;
+    const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(pegaDados())
+    });
+    const data = await response.json();
+    console.log(data);
+}
+
+
+
+function pegaDados() {
+    let nomePessoa = document.getElementById('name').value;
+    let cpfPessoa = document.getElementById('cpf').value;
+    let dataNascimento = document.getElementById('DatadeNascimento').value;
+    let telefonePessoa = document.getElementById('Telefone').value;
+    let grupoPrioritario = document.getElementById('gropoPrioritario').value;
+
+
+    var data = {
+        "nome_pessoa": nomePessoa,
+        "cpf_pessoa": cpfPessoa,
+        "data_nascimento": dataNascimento,
+        "telefone_pessoa": telefonePessoa,
+        "grupo_prioritario": grupoPrioritario,
+    }
+
+    return data;
+}
+
+export default AgendamentoProd;

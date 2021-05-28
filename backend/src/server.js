@@ -1,9 +1,13 @@
 
 const express = require('express');
+var cors = require('cors');
+
 const sync = require('./services/conect.postgres').sincronizarPostgres;
 const app = express();
 
-const port = 3000;
+
+
+const port = 3443;
 const hostname = 'localhost';
 
 
@@ -11,7 +15,7 @@ const hostname = 'localhost';
 
 //Rotas
 const defaultRoutes = require('./routes/default-routes');
-const ramaisRoutes = require('./routes/ramais-routes');
+const ramaisRoutes = require('./routes/pessoa-routes');
 
 
 //Parsing do conteúdo das requisições 
@@ -20,10 +24,11 @@ app.use(express.urlencoded({
 }));
 
 app.use(express.json());
+app.use(cors());
 
 
 app.use('/', defaultRoutes);
-app.use('/ramais/', ramaisRoutes);
+app.use('/pessoas/', ramaisRoutes);
 
 app.listen(port, hostname, () => {
   console.log(`Servidor rodando no endereço: http://${hostname}:${port}\n\n`);

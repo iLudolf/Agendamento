@@ -1,34 +1,43 @@
 const Sequelize = require('../services/conect.postgres').Sequelize;
 const postgres = require('../services/conect.postgres').sequelize;
 
-const ramaisModel = postgres.define('ramais', {
+const pessoaModel = postgres.define('pessoa', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    nome: {
+    nome_pessoa: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    email: {
+    cpf_pessoa: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    setor: {
+    data_nascimento: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    unidade: {
+    telefone_pessoa: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    numero: {
+    grupo_prioritario: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+    },  
+    endereço_pessoa: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },  
+    email_pessoa: {
         type: Sequelize.STRING,
         allowNull: false
     },  
     
+    
 });
 
-module.exports = ramaisModel
+module.exports = pessoaModel

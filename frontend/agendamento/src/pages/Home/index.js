@@ -15,7 +15,7 @@ function Home() {
           <div class="row align-items-md-stretch">
             <div class="col-md-6 ">
               <div class="h-100 p-5  prod  rounded-3">
-                <h2>Ambiente de Produção</h2>
+                <h2> Ambiente de Produção</h2>
                 <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then, mix and match with additional component themes and more.</p>
                 <a class="btn btn-outline-dark" href="/production" type="button">Abrir</a>
               </div>
