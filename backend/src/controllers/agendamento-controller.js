@@ -1,4 +1,4 @@
-const pessoaModel = require('../models/pessoa-model');
+const pessoaModel = require('../models/agendamento-model');
 
 exports.adicionarAgendamento = async (req, res) => {
     const pessoa = req.body;

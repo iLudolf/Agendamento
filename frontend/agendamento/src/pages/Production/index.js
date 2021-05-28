@@ -7,15 +7,17 @@ import NavbarProd from '../../components/NavbarProd';
 
 function Production() {
 
-    const API_URL = `http://localhost:3001/pessoas/`;
+    const [pessoa, setpessoa] = useState([]);
+    const [agendamento, setagendamento] = useState([]);
 
-    const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        loadData();
+        loadDadosPessoas();
+        loadDadosUnidades();
     }, []);
 
-    const loadData = async () => {
+    const loadDadosPessoas = async () => {
+        const API_URL = `http://localhost:3001/pessoas/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -24,13 +26,12 @@ function Production() {
             }
         });
         const data = await response.json();
-        setRecipes(data.Pessoas);
+        setpessoa(data.Pessoas);
         // console.log(data.Pessoas);
     }
 
-    var test = recipes.map(function (registros) {
+    var dadosPessoas = pessoa.map(function (registros) {
         return (
-
             <tr key={registros.id}>
                 <td>{registros.nome_pessoa}</td>
                 <td>{registros.cpf_pessoa}</td>
@@ -40,14 +41,38 @@ function Production() {
                 <td>{registros.endereço_pessoa}</td>
                 <td>{registros.email_pessoa}</td>
             </tr>
-
-
-
-
-
-
         ); //retorna o registro 
     });
+
+    const loadDadosUnidades = async () => {
+        const API_URL = `http://localhost:3001/unidade/`;
+        const response = await fetch(API_URL, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        setagendamento(data.Unidades);
+        // console.log(data.Pessoas);
+    }
+    
+
+    var dadosUnidades = agendamento.map(function (registros) {
+        return (
+            <tr key={registros.id}>
+                <td>{registros.nome_unidade}</td>
+                <td>{registros.descricao_unidade}</td>
+                <td>{registros.endereço_unidade}</td>
+                <td>{registros.telefone_unidade}</td>
+                <td>{registros.email_unidade}</td>              
+            </tr>
+        ); //retorna o registro 
+    });
+    
+
+ 
 
 
     return (
@@ -118,7 +143,7 @@ function Production() {
                             </thead>
                             <tbody>
 
-                                {test}
+                                {dadosPessoas}
 
 
 
@@ -186,7 +211,7 @@ function Production() {
                             <tbody>
 
 
-                                {test}
+                                {dadosPessoas}
 
                             </tbody>
                         </table>
@@ -247,24 +272,14 @@ function Production() {
                             <thead>
                                 <tr className="table-title">
                                     <th scope="col">Nome</th>
-                                    <th scope="col">Setor</th>
-                                    <th scope="col">Unidade</th>
-                                    <th scope="col">Ramal</th>
+                                    <th scope="col">Descrição</th>
+                                    <th scope="col">Endereço</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Email</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th >Adm Peças</th>
-                                    <td>Peças</td>
-                                    <td>Teixeira de Freitas</td>
-                                    <td>6696</td>
-                                </tr>
-                                <tr>
-                                    <th >Israel Ludolf</th>
-                                    <td>Analista de Suporte/TI</td>
-                                    <td>Viana</td>
-                                    <td>1973</td>
-                                </tr>
+                            <tbody>                               
+                                    {dadosUnidades}                               
                             </tbody>
                         </table>
                     </div>

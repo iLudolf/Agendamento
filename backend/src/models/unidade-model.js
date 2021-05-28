@@ -25,13 +25,13 @@ const unidadeModel = postgres.define('unidade', {
         allowNull: false
     },
     email_unidade: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
-    },  
-    endereço_unidade: {
         type: Sequelize.STRING,
         allowNull: false
     },  
+    // latlong_unidade: {
+    //     type: Sequelize.STRING,
+    //     allowNull: false
+    // },  
     
     
     

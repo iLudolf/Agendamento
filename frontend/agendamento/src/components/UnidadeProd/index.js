@@ -1,6 +1,6 @@
 import './styles.css';
 
-function Unidade() {
+function UnidadeProd() {
 
     return (
         <>
@@ -18,7 +18,7 @@ function Unidade() {
                                     <div className="row g-3">
                                         <div className="col-sm-6">
                                             <label for="firstName" className="form-label">Nome da unidade</label>
-                                            <input type="text" className="form-control" id="firstName" placeholder="" required />
+                                            <input type="text" className="form-control" id="nomeUnidade" placeholder="" required />
                                             
                                         </div>                                  
 
@@ -27,7 +27,7 @@ function Unidade() {
                                             <label for="username" className="form-label">Telefone</label>
                                             <div className="input-group has-validation">
                                                 <span className="input-group-text">+55</span>
-                                                <input type="text" className="form-control" id="Telefone" placeholder="Celular" required />
+                                                <input type="text" className="form-control" id="telefoneUnidade" placeholder="Celular" required />
                                                 <div className="invalid-feedback">
                                                     Your username is required.
                                                 </div>
@@ -35,16 +35,16 @@ function Unidade() {
                                         </div>
 
                                         <div className="col-sm-3">
-                                            <label for="email" className="form-label">CEP</label>
-                                            <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                            <label for="text" className="form-label">CEP</label>
+                                            <input type="text" className="form-control" id="CEP" placeholder="" />
                                             <div className="invalid-feedback">
                                                 Please enter a valid email address for shipping updates.
                                             </div>
                                         </div>
 
                                         <div className="col-sm-6">
-                                            <label for="email" className="form-label">Endereço</label>
-                                            <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                            <label for="enderecoUnidade" className="form-label">Endereço</label>
+                                            <input type="text" className="form-control" id="enderecoUnidade" placeholder="seu@examplo.com" />
                                             <div className="invalid-feedback">
                                                 Please enter a valid email address for shipping updates.
                                             </div>
@@ -52,7 +52,7 @@ function Unidade() {
 
                                         <div className="col-sm-6">
                                             <label for="email" className="form-label">Email</label>
-                                            <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                            <input type="email" className="form-control" id="emailUnidade" placeholder="seu@examplo.com" />
                                             <div className="invalid-feedback">
                                                 Please enter a valid email address for shipping updates.
                                             </div>
@@ -60,16 +60,16 @@ function Unidade() {
 
                                         <div className="col-sm-15">
                                             <label for="exampleFormControlTextarea1" className="form-label">Descrição</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <textarea class="form-control" id="descricaoUnidade" rows="3"></textarea>
                                         </div>
 
                             
 
                                         <div className="col-md-6">
-                                            <label for="state" className="form-label">Unidade de Saúde</label>
+                                            <label for="state" className="form-label">UnidadeProd de Saúde</label>
                                             <select className="form-select" id="state" required>
                                                 <option value="">Escolher...</option>
-                                                <option>California</option>
+                                                <option>Unidade x</option>
                                             </select>
                                             <div className="invalid-feedback">
                                                 Please provide a valid state.
@@ -95,7 +95,7 @@ function Unidade() {
                                     <hr className="my-4" />
 
 
-                                    <button type="button" type="submit" class="btn btn-primary ">Registrar</button>
+                                    <button type="button" class="btn btn-primary" onClick={() => enviarDados()}>Enviar</button>
                                     <button type="button" class="btn btn-secondary mx-2">Buscar</button>
 
 
@@ -114,4 +114,45 @@ function Unidade() {
     );
 }
 
-export default Unidade;
+
+const enviarDados = async () => {
+
+    const API_URL = `http://localhost:3001/unidade/`;
+    const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(pegaDados())
+    });
+    const data = await response.json();
+    // console.log(data);
+}
+
+
+
+function pegaDados() {
+    let nomeUnidade = document.getElementById('nomeUnidade').value;
+    let descricaoUnidade = document.getElementById('descricaoUnidade').value; 
+    let telefoneUnidadee = document.getElementById('telefoneUnidade').value;
+    let endereçoUnidade = document.getElementById('enderecoUnidade').value;
+    let emailUnidade = document.getElementById('emailUnidade').value;
+
+  
+
+
+
+    var data = {
+        "nome_unidade": nomeUnidade,
+        "descricao_unidade": descricaoUnidade,
+        "endereço_unidade": endereçoUnidade,
+        "telefone_unidade": telefoneUnidadee,
+        "email_unidade": emailUnidade,        
+    }
+
+   
+    return data;
+}
+
+export default UnidadeProd;

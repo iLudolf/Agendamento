@@ -18,12 +18,12 @@ exports.adicionarUnidade = async (req, res) => {
         })
     } else {
         const unidadeExiste = await unidadeModel.create({
-            nome_unidade: pessoa.nome_unidade,
-            descricao_unidade: pessoa.descricao_unidade,
-            endereço_unidade: pessoa.endereço_unidade,
-            telefone_unidade: pessoa.telefone_unidade,
-            email_unidade: pessoa.email_unidade,
-            endereço_unidade: pessoa.endereço_unidade,            
+            nome_unidade: unidade.nome_unidade,
+            descricao_unidade: unidade.descricao_unidade,
+            endereço_unidade: unidade.endereço_unidade,
+            telefone_unidade: unidade.telefone_unidade,
+            email_unidade: unidade.email_unidade,
+            // endereço_unidade: pessoa.endereço_unidade,            
         });
         res.status(200).json({
             status: 'ok',
@@ -81,12 +81,12 @@ exports.atualizarUnidade = async (req, res) => {
         let unidade_id = req.params.id;
 
         let novaUnidade = {
-            nome_unidade: pessoa.nome_unidade,
-            descricao_unidade: pessoa.descricao_unidade,
-            endereço_unidade: pessoa.endereço_unidade,
-            telefone_unidade: pessoa.telefone_unidade,
-            email_unidade: pessoa.email_unidade,
-            endereço_unidade: pessoa.endereço_unidade            
+            nome_unidade: unidade.nome_unidade,
+            descricao_unidade: unidade.descricao_unidade,
+            endereço_unidade: unidade.endereço_unidade,
+            telefone_unidade: unidade.telefone_unidade,
+            email_unidade: unidade.email_unidade,
+            endereço_unidade: unidade.endereço_unidade            
         }
 
         if (unidade_id) {
