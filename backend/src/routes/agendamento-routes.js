@@ -2,7 +2,7 @@ let router = require('express').Router();
 
 const agendamentoController = require('../controllers/agendamento-controller');
 
-router.post('/', agendamentoController.adicionarAgendamento);
+// router.post('/', agendamentoController.adicionarAgendamento);
 
 router.get('/', agendamentoController.listarAgendamento);
 

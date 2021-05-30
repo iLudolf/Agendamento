@@ -1,41 +1,45 @@
 const agendamentoModel = require('../models/agendamento-model');
-const pessoaModel = require('../models/pessoa-model');
+
+// exports.adicionarAgendamento = async (req, res) => {
+//     const unidade = req.body;
+
+//     const unidadeExiste = await agendamentoModel.findAll({
+//         where: {
+//             email_unidade: unidade.email_unidade
+//         }
+//     });
 
 
-exports.adicionarAgendamento = async (valores) => {
-    const pessoa = valores;
 
-    const pessoaExiste = await pessoaModel.findAll({
-        where: {
-            cpf_pessoa: pessoa.cpf_pessoa
-        }
-    });
-
-    if (pessoaExiste.length > 0) {
-        return "erro"
-    } else {
-        const pessoaExiste = await agendamentoModel.create({
-            id_pessoa: pessoaExiste.id, 
-            id_unidade: pessoaExiste.id_unidade,
-            data_hora_agendamento: pessoaExiste.data_hora_agendamento,
-            necessidades_especiais: pessoaExiste.necessidades_especiais,
-            observacoes_agendamento: pessoaExiste.necessidades_especiais
-           
-        });
-       
-      
-         
-    }
-}
+//     if (unidadeExiste.length > 0) {
+//         res.status(403).json({
+//             status: "Erro",
+//             resultado: `A unidade com e-mail: ${unidade.email_unidade} já está cadastrado no Sistema!` 
+//         })
+//     } else {
+//         const unidadeExiste = await agendamentoModel.create({
+//             nome_unidade: unidade.nome_unidade,
+//             descricao_unidade: unidade.descricao_unidade,
+//             endereço_unidade: unidade.endereço_unidade,
+//             telefone_unidade: unidade.telefone_unidade,
+//             email_unidade: unidade.email_unidade,
+//             // endereço_unidade: pessoa.endereço_unidade,            
+//         });
+//         res.status(200).json({
+//             status: 'ok',
+//             resultado: 'Unidade criada com sucesso!'
+//         })
+//     }
+// }
 
 exports.listarAgendamento = async (req, res) => {
    
     try {
-        const pessoa = await pessoaModel.findAll();
+        const agendamento = await agendamentoModel.findAll();
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.status(200).json({
             status: 'OK',
-            Pessoas: pessoa
+            Agendamentos: agendamento
         })
     } catch (error) {
         res.status(404).json({
@@ -46,27 +50,27 @@ exports.listarAgendamento = async (req, res) => {
 }
 
 exports.listarAgendamentoPorID = async (req, res) => {
-    let pessoa_id = req.params.id;
+    let agendamento_id = req.params.id;
 
     try {
-        const pessoa = await pessoaModel.findByPk(pessoa_id);
+        const agendamento = await agendamentoModel.findByPk(agendamento_id);
 
-        if (pessoa) {
+        if (agendamento) {
             res.status(200).json({
                 status: "ok",
                 message: "usuário encontrado com sucesso!",
-                aluno: pessoa
+                aluno: agendamento
             })
         } else {
             res.status(406).json({
                 status: "erro",
-                message: `Não foi possivel localizar o usuário de id ${pessoa_id}!`
+                message: `Não foi possivel localizar o usuário de id ${agendamento_id}!`
             })
         }
     } catch (erro) {
         res.status(404).json({
             status: "erro",
-            message: `Erro ao localizar o usuários com id ${pessoa_id}!`
+            message: `Erro ao localizar o usuários com id ${agendamento_id}!`
         })
     }
 }
@@ -74,7 +78,7 @@ exports.listarAgendamentoPorID = async (req, res) => {
 exports.atualizarAgendamento = async (req, res) => {
 
     try {
-        let pessoa_id = req.params.id;
+        let agendamento_id = req.params.id;
 
         let novoRegistro = {
             nome: req.body.nome,
@@ -83,9 +87,9 @@ exports.atualizarAgendamento = async (req, res) => {
             data_alteracao: new Date()
         }
 
-        if (pessoa_id) {
+        if (agendamento_id) {
 
-            let registroAtualizado = await pessoaModel.update(novoRegistro, { where: { id: pessoa_id } })
+            let registroAtualizado = await agendamentoModel.update(novoRegistro, { where: { id: agendamento_id } })
 
             if (registroAtualizado) {
                 res.status(200).json({
@@ -96,7 +100,7 @@ exports.atualizarAgendamento = async (req, res) => {
             } else {
                 res.status(404).json({
                     status: "erro",
-                    message: `Erro ao atualizar o registro de id ${pessoa_id}`
+                    message: `Erro ao atualizar o registro de id ${agendamento_id}`
                 })
             }
         } else {
@@ -112,27 +116,27 @@ exports.atualizarAgendamento = async (req, res) => {
 }
 
 exports.removerAgendamento = async (req, res) => {
-    let pessoa_id = req.params.id;
+    let agendamento_id = req.params.id;
 
-    if (pessoa_id) {
+    if (agendamento_id) {
         try {
-            let alunoDeletado = await pessoaModel.destroy({ where: { id: pessoa_id } });
+            let alunoDeletado = await agendamentoModel.destroy({ where: { id: agendamento_id } });
             if (alunoDeletado) {
                 res.status(200).json({
                     status: "ok",
-                    message: `Registro de id ${pessoa_id} deletado com sucesso!`
+                    message: `o Agendamento com id ${agendamento_id}, foi deletado com sucesso!`
                 })
             } else {
                 res.status(404).json({
                     status: "erro",
-                    message: `Não foi possível deletar o Registro de id ${pessoa_id}`
+                    message: `Não foi possível deletar o Registro de id ${agendamento_id}`
                 })
 
             }
         } catch (erro) {
             res.status(406).json({
                 status: "erro",
-                message: `Não foi possível deletar o Registro de id ${pessoa_id} `
+                message: `Não foi possível deletar o Registro de id ${agendamento_id} `
             })
         }
     }

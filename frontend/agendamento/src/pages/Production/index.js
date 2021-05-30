@@ -3,18 +3,21 @@ import React, { useState, useEffect } from 'react';
 import './styles.css';
 
 import NavbarProd from '../../components/NavbarProd';
+import Modal from '../../components/Modal';
 
 
 function Production() {
 
-    const [pessoa, setpessoa] = useState([]);
-    const [agendamento, setagendamento] = useState([]);
+    const [pessoa, setPessoa] = useState([]);
+    const [agendamento, setAgendamento] = useState([]);
+    const [unidades, setUnidades] = useState([]);
 
+    const [modal, setmodal] = useState([]);
 
     useEffect(() => {
         loadDadosPessoas();
         loadDadosUnidades();
-
+        loadDadosAgendamento();
     }, []);
 
     const loadDadosPessoas = async () => {
@@ -27,15 +30,18 @@ function Production() {
             }
         });
         const data = await response.json();
-        setpessoa(data.Pessoas);
+        setPessoa(data.Pessoas);
         // console.log(data.Pessoas);
     }
 
     if (pessoa != undefined) {
 
         var dadosPessoas = pessoa.map(function (registros) {
+            const nome = "pessoas";
             return (
                 <tr key={registros.id}>
+                    <th scope="col"> <a href="" onClick={() => deletarRegistro(registros.id, nome)}>  <img src="./close-squared-alt.svg" className="bi " width="25" height="25" title="cardapio" alt="cardapio"></img></a></th>
+                    {/* <th scope="col"><Modal id={registros.id} nome={registros.nome_pessoa} /> </th> */}
                     <td>{registros.nome_pessoa}</td>
                     <td>{registros.cpf_pessoa}</td>
                     <td>{registros.data_nascimento}</td>
@@ -59,14 +65,20 @@ function Production() {
             }
         });
         const data = await response.json();
-        setagendamento(data.Unidades);
+        setUnidades(data.Unidades);
         // console.log(data.Pessoas);
     }
 
-    if (agendamento != undefined) {
-        var dadosUnidades = agendamento.map(function (registros) {
+    if (unidades != undefined) {
+        var dadosUnidades = unidades.map(function (registros) {
+            const nome = "unidades";
+
+            let dados = registros.id;
             return (
                 <tr key={registros.id}>
+                    <th scope="col"> <a href="" onClick={() => deletarRegistro(registros.id, nome)}>  <img src="./close-squared-alt.svg" className="bi " width="25" height="25" title="cardapio" alt="cardapio"></img></a></th>
+                    <th scope="col"><Modal id={registros.id} nome={registros.nome_unidade} descricao={registros.descricao_unidade} endereco={registros.endereço_unidade} telefone={registros.telefone_unidade} mail={registros.email_unidade}/></th>
+                   
                     <td>{registros.nome_unidade}</td>
                     <td>{registros.descricao_unidade}</td>
                     <td>{registros.endereço_unidade}</td>
@@ -77,7 +89,36 @@ function Production() {
         });
     }
 
+    const loadDadosAgendamento = async () => {
+        const API_URL = `http://localhost:3001/agendamento/`;
+        const response = await fetch(API_URL, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        setAgendamento(data.Agendamentos);
+        // console.log(data.Pessoas);
+    }
 
+    if (agendamento != undefined) {
+        var dadosAgendamento = agendamento.map(function (registros) {
+            const nome = "agendamento";
+            return (
+                <tr key={registros.id}>
+                    <th scope="col"> <a href="" onClick={() => deletarRegistro(registros.id, nome)}>  <img src="./close-squared-alt.svg" className="bi " width="25" height="25" title="cardapio" alt="cardapio"></img></a></th>
+                    {/* <th scope="col"><Modal id={registros.id} nome={nome} /> </th> */}
+                    <td>{registros.id_pessoa}</td>
+                    <td>{registros.id_unidade}</td>
+                    <td>{registros.data_hora_agendamento}</td>
+                    <td>{registros.necessidades_especiais ? "Sim" : "Não"}</td>
+                    <td>{registros.observacoes_agendamento ? "Sim" : "Não"}</td>
+                </tr>
+            ); //retorna o registro 
+        });
+    }
 
 
 
@@ -138,8 +179,10 @@ function Production() {
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr className="table-title">
-                                    <th scope="col">Usuario</th>
-                                    <th scope="col">Unidade de saude</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col">ID Pessoa</th>
+                                    <th scope="col">ID Unidade</th>
                                     <th scope="col">Data do Agendamento</th>
                                     <th scope="col">Necessidades Especiais</th>
                                     <th scope="col">Observações Agendamento</th>
@@ -147,7 +190,7 @@ function Production() {
                             </thead>
                             <tbody>
 
-                                {/* {dadosPessoas} */}
+                                {dadosAgendamento}
 
 
 
@@ -203,6 +246,8 @@ function Production() {
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr className="table-title">
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
                                     <th scope="col">Nome</th>
                                     <th scope="col">CPF</th>
                                     <th scope="col">Data de nascimento</th>
@@ -229,7 +274,7 @@ function Production() {
                     <div id="internaCabecalho" class="input-group ">
                         <img src="./ico/first-aid.svg" className="bi " width="40" height="40" title="Ramais" alt="phone"></img>
 
-                        <h1 className="ms-2">Unidade de Saúde Cadastradas</h1>
+                        <h1 className="ms-2">Unidades de Saúde Cadastradas</h1>
                     </div>
 
                     <hr className="col-3 col-md-7 mb-3" />
@@ -275,6 +320,8 @@ function Production() {
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr className="table-title">
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
                                     <th scope="col">Nome</th>
                                     <th scope="col">Descrição</th>
                                     <th scope="col">Endereço</th>
@@ -294,5 +341,21 @@ function Production() {
         </>
     );
 }
+
+
+async function deletarRegistro(registro, nome) {
+    const API_URL = `http://localhost:3001/${nome}/${registro}`;
+    const response = await fetch(API_URL, {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+    const data = await response.json();
+    console.log(data.resultado);
+
+}
+
 
 export default Production;

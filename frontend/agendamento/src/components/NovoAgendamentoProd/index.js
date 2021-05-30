@@ -24,14 +24,18 @@ function NovoAgendamentoProd() {
         setunidades(data.Unidades);
     }
 
-    var dadosUnidades = unidades.map(function (registros) {
-        return (
-            <>
-                <option value={registros.id}>{registros.nome_unidade}</option>
-            </>
-        ); //retorna o registro 
-    });
+    if(unidades != undefined){
+        var dadosUnidades = unidades.map(function (registros) {
+            return (
+                <>
+                    <option value={registros.id}>{registros.nome_unidade}</option>
+                </>
+            ); //retorna o registro 
+        });
+    
+    }
 
+   
 
     return (
         <>
@@ -231,8 +235,8 @@ const enviarDados = async () => {
         },
         body: JSON.stringify(pegaDados())
     });
-    const data = await response.json();
-    console.log(data);
+    const data = await response.json();   
+    alert(data.resultado);
 }
 
 
@@ -266,7 +270,7 @@ function pegaDados() {
         "observacoes_agendamento": observacoesAgendamento
 
     }
-console.log(data)
+
     return data;
 }
 

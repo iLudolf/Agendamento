@@ -1,15 +1,14 @@
 import './styles.css';
 
 
-// import Sidebars from '../../components/Sidebars';
+import Modal from '../../components/Modal';
 
 
 
 function Test() {
   return (
     <>
-
-     
+      < Modal />
     </>
   );
 }

@@ -2,6 +2,7 @@ import './styles.css';
 
 import NavbarProd from '../NavbarProd';
 
+
 function NovaUnidadeProd() {
 
     return (
@@ -88,6 +89,7 @@ function NovaUnidadeProd() {
 
 
                                     <button type="button" class="btn btn-primary" onClick={() => enviarDados()}>Enviar</button>
+                                    
                                     <button type="button" class="btn btn-secondary mx-2">Buscar</button>
 
 
@@ -146,5 +148,7 @@ function pegaDados() {
    
     return data;
 }
+
+
 
 export default NovaUnidadeProd;
