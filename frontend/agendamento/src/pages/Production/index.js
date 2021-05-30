@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import './styles.css';
 
 import NavbarProd from '../../components/NavbarProd';
-import Modal from '../../components/Modal';
+
+
 
 
 function Production() {
@@ -12,16 +13,16 @@ function Production() {
     const [agendamento, setAgendamento] = useState([]);
     const [unidades, setUnidades] = useState([]);
 
-    const [modal, setmodal] = useState([]);
+
 
     useEffect(() => {
         loadDadosPessoas();
         loadDadosUnidades();
-        loadDadosAgendamento();
+        loadDadosAgendamento();     
     }, []);
 
     const loadDadosPessoas = async () => {
-        const API_URL = `http://localhost:3001/pessoas/`;
+        const API_URL = `http://localhost:3001/pg/pessoas/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -39,9 +40,7 @@ function Production() {
         var dadosPessoas = pessoa.map(function (registros) {
             const nome = "pessoas";
             return (
-                <tr key={registros.id}>
-                    <th scope="col"> <a href="" onClick={() => deletarRegistro(registros.id, nome)}>  <img src="./close-squared-alt.svg" className="bi " width="25" height="25" title="cardapio" alt="cardapio"></img></a></th>
-                    {/* <th scope="col"><Modal id={registros.id} nome={registros.nome_pessoa} /> </th> */}
+                <tr key={registros.id}>                    
                     <td>{registros.nome_pessoa}</td>
                     <td>{registros.cpf_pessoa}</td>
                     <td>{registros.data_nascimento}</td>
@@ -56,7 +55,7 @@ function Production() {
 
 
     const loadDadosUnidades = async () => {
-        const API_URL = `http://localhost:3001/unidades/`;
+        const API_URL = `http://localhost:3001/pg/unidades/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -75,10 +74,8 @@ function Production() {
 
             let dados = registros.id;
             return (
-                <tr key={registros.id}>
-                    <th scope="col"> <a href="" onClick={() => deletarRegistro(registros.id, nome)}>  <img src="./close-squared-alt.svg" className="bi " width="25" height="25" title="cardapio" alt="cardapio"></img></a></th>
-                    <th scope="col"><Modal id={registros.id} nome={registros.nome_unidade} descricao={registros.descricao_unidade} endereco={registros.endereço_unidade} telefone={registros.telefone_unidade} mail={registros.email_unidade}/></th>
-                   
+                <tr key={registros.id}>                 
+
                     <td>{registros.nome_unidade}</td>
                     <td>{registros.descricao_unidade}</td>
                     <td>{registros.endereço_unidade}</td>
@@ -90,7 +87,7 @@ function Production() {
     }
 
     const loadDadosAgendamento = async () => {
-        const API_URL = `http://localhost:3001/agendamento/`;
+        const API_URL = `http://localhost:3001/pg/agendamentos/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -107,9 +104,7 @@ function Production() {
         var dadosAgendamento = agendamento.map(function (registros) {
             const nome = "agendamento";
             return (
-                <tr key={registros.id}>
-                    <th scope="col"> <a href="" onClick={() => deletarRegistro(registros.id, nome)}>  <img src="./close-squared-alt.svg" className="bi " width="25" height="25" title="cardapio" alt="cardapio"></img></a></th>
-                    {/* <th scope="col"><Modal id={registros.id} nome={nome} /> </th> */}
+                <tr key={registros.id}>                    
                     <td>{registros.id_pessoa}</td>
                     <td>{registros.id_unidade}</td>
                     <td>{registros.data_hora_agendamento}</td>
@@ -178,9 +173,7 @@ function Production() {
 
                         <table class="table table-hover table-bordered">
                             <thead>
-                                <tr className="table-title">
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
+                                <tr className="table-title">                                 
                                     <th scope="col">ID Pessoa</th>
                                     <th scope="col">ID Unidade</th>
                                     <th scope="col">Data do Agendamento</th>
@@ -245,9 +238,7 @@ function Production() {
 
                         <table class="table table-hover table-bordered">
                             <thead>
-                                <tr className="table-title">
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
+                                <tr className="table-title">                                   
                                     <th scope="col">Nome</th>
                                     <th scope="col">CPF</th>
                                     <th scope="col">Data de nascimento</th>
@@ -319,9 +310,7 @@ function Production() {
 
                         <table class="table table-hover table-bordered">
                             <thead>
-                                <tr className="table-title">
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
+                                <tr className="table-title">                                
                                     <th scope="col">Nome</th>
                                     <th scope="col">Descrição</th>
                                     <th scope="col">Endereço</th>
@@ -337,7 +326,6 @@ function Production() {
                 </div>
             </div>
             <div class="b-example-divider mb-0"></div>
-
         </>
     );
 }

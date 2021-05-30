@@ -58,8 +58,7 @@ exports.listarAgendamentoPorID = async (req, res) => {
         if (agendamento) {
             res.status(200).json({
                 status: "ok",
-                message: "usuário encontrado com sucesso!",
-                aluno: agendamento
+                message: "usuário encontrado com sucesso!",              
             })
         } else {
             res.status(406).json({
@@ -120,8 +119,8 @@ exports.removerAgendamento = async (req, res) => {
 
     if (agendamento_id) {
         try {
-            let alunoDeletado = await agendamentoModel.destroy({ where: { id: agendamento_id } });
-            if (alunoDeletado) {
+            let agendamentoDeletado = await agendamentoModel.destroy({ where: { id: agendamento_id } });
+            if (agendamentoDeletado) {
                 res.status(200).json({
                     status: "ok",
                     message: `o Agendamento com id ${agendamento_id}, foi deletado com sucesso!`

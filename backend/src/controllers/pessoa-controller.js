@@ -16,7 +16,7 @@ exports.adicionarPessoa = async (req, res) => {
     if (pessoaExiste.length > 0) {
         res.status(403).json({
             status: "erro",
-            resultado: "Usuário já está cadastrado no Sistema!"
+            message: "Usuário já está cadastrado no Sistema!"
         })
     } else {
         const pessoaExiste = await pessoaModel.create({
@@ -40,7 +40,8 @@ exports.adicionarPessoa = async (req, res) => {
 
         res.status(200).json({
             status: 'ok',
-            resultado: pessoaExiste
+            resultado: pessoaExiste, 
+            message: `Usuario com CPF: ${pessoa.cpf_pessoa}, cadastrado com sucesso!`
         })
     }
 }

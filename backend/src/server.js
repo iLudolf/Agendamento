@@ -30,9 +30,9 @@ app.use(cors());
 
 
 app.use('/', defaultRoutes);
-app.use('/pessoas/', pessoaRoutes);
-app.use('/unidades/', unidadeRoutes);
-app.use('/agendamento/', agendamentoRoutes);
+app.use('/pg/pessoas/', pessoaRoutes);
+app.use('/pg/unidades/', unidadeRoutes);
+app.use('/pg/agendamentos/', agendamentoRoutes);
 
 app.listen(port, hostname, () => {
   console.log(`Servidor rodando no endereço: http://${hostname}:${port}\n\n`);

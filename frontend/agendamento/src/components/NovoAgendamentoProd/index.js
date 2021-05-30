@@ -12,7 +12,7 @@ function NovoAgendamentoProd() {
     }, []);
 
     const loadUnidades = async () => {
-        const API_URL = `http://localhost:3001/unidades/`;
+        const API_URL = `http://localhost:3001/pg/unidades/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -101,7 +101,7 @@ function NovoAgendamentoProd() {
 
                                 <div className="col-sm-6">
                                     <label for="email" className="form-label">Email</label>
-                                    <input type="email" className="form-control" id="email" placeholder="seu@examplo.com" />
+                                    <input type="email" className="form-control" id="email" placeholder="nome@outlook.com" />
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -109,7 +109,7 @@ function NovoAgendamentoProd() {
 
                                 <div className="col-sm-3">
                                     <label for="email" className="form-label">Logradouro/Nome</label>
-                                    <input type="email" className="form-control" id="Logradouro" placeholder="seu@examplo.com" />
+                                    <input type="email" className="form-control" id="Logradouro" placeholder="Logradouro" />
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -117,7 +117,7 @@ function NovoAgendamentoProd() {
 
                                 <div className="col-sm-3">
                                     <label for="email" className="form-label">Bairro/Distrito</label>
-                                    <input type="email" className="form-control" id="Bairro" placeholder="seu@examplo.com" />
+                                    <input type="email" className="form-control" id="Bairro" placeholder="Bairro" />
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -125,7 +125,7 @@ function NovoAgendamentoProd() {
 
                                 <div className="col-sm-3">
                                     <label for="email" className="form-label">Localidade/UF</label>
-                                    <input type="email" className="form-control" id="Localidade" placeholder="seu@examplo.com" />
+                                    <input type="email" className="form-control" id="Localidade" placeholder="UF" />
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -134,7 +134,7 @@ function NovoAgendamentoProd() {
 
                                 <div className="col-sm-3">
                                     <label for="email" className="form-label">CEP</label>
-                                    <input type="email" className="form-control" id="CEP" placeholder="seu@examplo.com" />
+                                    <input type="email" className="form-control" id="CEP" placeholder="29144690" />
                                     <div className="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -226,7 +226,7 @@ function NovoAgendamentoProd() {
 
 const enviarDados = async () => {
 
-    const API_URL = `http://localhost:3001/pessoas/`;
+    const API_URL = `http://localhost:3001/pg/pessoas/`;
     const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
@@ -236,7 +236,7 @@ const enviarDados = async () => {
         body: JSON.stringify(pegaDados())
     });
     const data = await response.json();   
-    alert(data.resultado);
+    alert(data.message);
 }
 
 
