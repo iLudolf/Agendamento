@@ -1,7 +1,7 @@
 const Sequelize = require('../services/conect.postgres').Sequelize;
 const postgres = require('../services/conect.postgres').sequelize;
 
-const unidadeModel = postgres.define('unidade', {
+const unidadeModel = postgres.define('unidades', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,

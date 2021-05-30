@@ -11,9 +11,10 @@ function Production() {
     const [agendamento, setagendamento] = useState([]);
 
 
-    useEffect(() => {        loadDadosPessoas();
+    useEffect(() => {
+        loadDadosPessoas();
         loadDadosUnidades();
-      
+
     }, []);
 
     const loadDadosPessoas = async () => {
@@ -30,22 +31,26 @@ function Production() {
         // console.log(data.Pessoas);
     }
 
-    var dadosPessoas = pessoa.map(function (registros) {
-        return (
-            <tr key={registros.id}>
-                <td>{registros.nome_pessoa}</td>
-                <td>{registros.cpf_pessoa}</td>
-                <td>{registros.data_nascimento}</td>
-                <td>{registros.telefone_pessoa}</td>
-                <td>{registros.grupo_prioritario ? 'Sim' : 'Não'}</td>
-                <td>{registros.endereço_pessoa}</td>
-                <td>{registros.email_pessoa}</td>
-            </tr>
-        ); //retorna o registro 
-    });
+    if (pessoa != undefined) {
+
+        var dadosPessoas = pessoa.map(function (registros) {
+            return (
+                <tr key={registros.id}>
+                    <td>{registros.nome_pessoa}</td>
+                    <td>{registros.cpf_pessoa}</td>
+                    <td>{registros.data_nascimento}</td>
+                    <td>{registros.telefone_pessoa}</td>
+                    <td>{registros.grupo_prioritario ? 'Sim' : 'Não'}</td>
+                    <td>{registros.endereço_pessoa}</td>
+                    <td>{registros.email_pessoa}</td>
+                </tr>
+            ); //retorna o registro 
+        });
+    }
+
 
     const loadDadosUnidades = async () => {
-        const API_URL = `http://localhost:3001/unidade/`;
+        const API_URL = `http://localhost:3001/unidades/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -58,18 +63,20 @@ function Production() {
         // console.log(data.Pessoas);
     }
 
+    if (agendamento != undefined) {
+        var dadosUnidades = agendamento.map(function (registros) {
+            return (
+                <tr key={registros.id}>
+                    <td>{registros.nome_unidade}</td>
+                    <td>{registros.descricao_unidade}</td>
+                    <td>{registros.endereço_unidade}</td>
+                    <td>{registros.telefone_unidade}</td>
+                    <td>{registros.email_unidade}</td>
+                </tr>
+            ); //retorna o registro 
+        });
+    }
 
-    var dadosUnidades = agendamento.map(function (registros) {
-        return (
-            <tr key={registros.id}>
-                <td>{registros.nome_unidade}</td>
-                <td>{registros.descricao_unidade}</td>
-                <td>{registros.endereço_unidade}</td>
-                <td>{registros.telefone_unidade}</td>
-                <td>{registros.email_unidade}</td>
-            </tr>
-        ); //retorna o registro 
-    });
 
 
 

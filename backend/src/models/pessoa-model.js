@@ -1,7 +1,7 @@
 const Sequelize = require('../services/conect.postgres').Sequelize;
 const postgres = require('../services/conect.postgres').sequelize;
 
-const pessoaModel = postgres.define('pessoa', {
+const pessoaModel = postgres.define('pessoas', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -23,11 +23,7 @@ const pessoaModel = postgres.define('pessoa', {
     telefone_pessoa: {
         type: Sequelize.STRING,
         allowNull: false
-    },
-    grupo_prioritario: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
-    },  
+    },   
     endereço_pessoa: {
         type: Sequelize.STRING,
         allowNull: false
@@ -36,7 +32,11 @@ const pessoaModel = postgres.define('pessoa', {
         type: Sequelize.STRING,
         allowNull: false
     },  
-    
+    grupo_prioritario: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+    }    
+       
     
 });
 

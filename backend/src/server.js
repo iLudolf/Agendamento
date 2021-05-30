@@ -31,7 +31,7 @@ app.use(cors());
 
 app.use('/', defaultRoutes);
 app.use('/pessoas/', pessoaRoutes);
-app.use('/unidade/', unidadeRoutes);
+app.use('/unidades/', unidadeRoutes);
 app.use('/agendamento/', agendamentoRoutes);
 
 app.listen(port, hostname, () => {

@@ -67,18 +67,7 @@ function NovaUnidadeProd() {
                                         </div>
 
                             
-
-                                        <div className="col-md-6">
-                                            <label for="state" className="form-label">UnidadeProd de Saúde</label>
-                                            <select className="form-select" id="state" required>
-                                                <option value="">Escolher...</option>
-                                                <option>Unidade x</option>
-                                            </select>
-                                            <div className="invalid-feedback">
-                                                Please provide a valid state.
-                                            </div>
-                                        </div>
-
+                                     
 
 
                                     </div>
@@ -120,7 +109,7 @@ function NovaUnidadeProd() {
 
 const enviarDados = async () => {
 
-    const API_URL = `http://localhost:3001/unidade/`;
+    const API_URL = `http://localhost:3001/unidades/`;
     const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
@@ -130,7 +119,7 @@ const enviarDados = async () => {
         body: JSON.stringify(pegaDados())
     });
     const data = await response.json();
-    // console.log(data);
+    alert(data.resultado);
 }
 
 

@@ -1,7 +1,9 @@
-const pessoaModel = require('../models/agendamento-model');
+const agendamentoModel = require('../models/agendamento-model');
+const pessoaModel = require('../models/pessoa-model');
 
-exports.adicionarAgendamento = async (req, res) => {
-    const pessoa = req.body;
+
+exports.adicionarAgendamento = async (valores) => {
+    const pessoa = valores;
 
     const pessoaExiste = await pessoaModel.findAll({
         where: {
@@ -9,27 +11,20 @@ exports.adicionarAgendamento = async (req, res) => {
         }
     });
 
-
-
     if (pessoaExiste.length > 0) {
-        res.status(403).json({
-            status: "erro",
-            resultado: "Usuário já está cadastrado no Sistema!"
-        })
+        return "erro"
     } else {
-        const pessoaExiste = await pessoaModel.create({
-            nome_pessoa: pessoa.nome_pessoa,
-            cpf_pessoa: pessoa.cpf_pessoa,
-            data_nascimento: pessoa.data_nascimento,
-            telefone_pessoa: pessoa.telefone_pessoa,
-            grupo_prioritario: pessoa.grupo_prioritario,
-            endereço_pessoa: pessoa.endereço_pessoa,
-            email_pessoa: pessoa.email_pessoa
+        const pessoaExiste = await agendamentoModel.create({
+            id_pessoa: pessoaExiste.id, 
+            id_unidade: pessoaExiste.id_unidade,
+            data_hora_agendamento: pessoaExiste.data_hora_agendamento,
+            necessidades_especiais: pessoaExiste.necessidades_especiais,
+            observacoes_agendamento: pessoaExiste.necessidades_especiais
+           
         });
-        res.status(200).json({
-            status: 'ok',
-            resultado: pessoaExiste
-        })
+       
+      
+         
     }
 }
 

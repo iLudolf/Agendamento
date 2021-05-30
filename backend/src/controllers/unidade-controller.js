@@ -13,7 +13,7 @@ exports.adicionarUnidade = async (req, res) => {
 
     if (unidadeExiste.length > 0) {
         res.status(403).json({
-            status: "erro",
+            status: "Erro",
             resultado: `A unidade com e-mail: ${unidade.email_unidade} já está cadastrado no Sistema!` 
         })
     } else {
@@ -27,7 +27,7 @@ exports.adicionarUnidade = async (req, res) => {
         });
         res.status(200).json({
             status: 'ok',
-            resultado: unidadeExiste
+            resultado: 'Unidade criada com sucesso!'
         })
     }
 }

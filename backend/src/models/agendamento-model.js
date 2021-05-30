@@ -1,7 +1,7 @@
 const Sequelize = require('../services/conect.postgres').Sequelize;
 const postgres = require('../services/conect.postgres').sequelize;
 
-const agendamentoModel = postgres.define('agendamento', {
+const agendamentoModel = postgres.define('agendamentos', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,

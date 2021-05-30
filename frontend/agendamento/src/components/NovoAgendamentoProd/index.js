@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.css';
 
 import NavbarProd from '../NavbarProd';
@@ -6,13 +6,13 @@ import NavbarProd from '../NavbarProd';
 function NovoAgendamentoProd() {
 
     const [unidades, setunidades] = useState([]);
-   
-    useEffect(() => {        
+
+    useEffect(() => {
         loadUnidades();
     }, []);
 
     const loadUnidades = async () => {
-        const API_URL = `http://localhost:3001/unidade/`;
+        const API_URL = `http://localhost:3001/unidades/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -21,13 +21,13 @@ function NovoAgendamentoProd() {
             }
         });
         const data = await response.json();
-        setunidades(data.Unidades);   
+        setunidades(data.Unidades);
     }
 
     var dadosUnidades = unidades.map(function (registros) {
-        return (      
-            <>     
-            <option>{registros.nome_unidade}</option>
+        return (
+            <>
+                <option value={registros.id}>{registros.nome_unidade}</option>
             </>
         ); //retorna o registro 
     });
@@ -35,7 +35,7 @@ function NovoAgendamentoProd() {
 
     return (
         <>
-        <NavbarProd />
+            <NavbarProd />
             <div className="container">
                 <main>
                     <div className="py-5 text-center">
@@ -83,11 +83,11 @@ function NovoAgendamentoProd() {
                                 </div>
 
                                 <div className="col-md-3">
-                                    <label for="country" className="form-label">Sexo <span className="text-muted">(Optional)</span></label>
-                                    <select className="form-select" id="country" required>
+                                    <label for="country" className="form-label">Necessidades Especiais</label>
+                                    <select className="form-select" id="necessidadesEspeciais" required>
                                         <option value="">Escolher...</option>
-                                        <option>Masculino</option>
-                                        <option>Feminino</option>
+                                        <option value={true}>Sim</option>
+                                        <option value={false}>Não</option>
                                     </select>
                                     <div className="invalid-feedback">
                                         Please select a valid country.
@@ -127,7 +127,7 @@ function NovoAgendamentoProd() {
                                     </div>
                                 </div>
 
-                               
+
                                 <div className="col-sm-3">
                                     <label for="email" className="form-label">CEP</label>
                                     <input type="email" className="form-control" id="CEP" placeholder="seu@examplo.com" />
@@ -136,13 +136,14 @@ function NovoAgendamentoProd() {
                                     </div>
                                 </div>
 
-                              
+
+                                <hr className="my-4" />
 
                                 <div className="col-md-6">
                                     <label for="state" className="form-label">Unidade de Saúde</label>
-                                    <select className="form-select" id="state" required>
+                                    <select className="form-select" id="unidadeID" required>
                                         <option value="">Escolher...</option>
-                                       {dadosUnidades}
+                                        {dadosUnidades}
                                     </select>
                                     <div className="invalid-feedback">
                                         Please provide a valid state.
@@ -167,8 +168,13 @@ function NovoAgendamentoProd() {
 
                                 <div class="col-sm-3" >
                                     <label for="state" class="form-label">Data</label>
-                                    <input type="date" name="bday" min="1000-01-01"
+                                    <input type="date" id="DataAgendamento" name="bday" min="1000-01-01"
                                         max="3000-12-31" class="form-control" />
+                                </div>
+
+                                <div className="col-sm-15">
+                                    <label for="exampleFormControlTextarea1" className="form-label">Observações Agendamento</label>
+                                    <textarea class="form-control" id="observacoesAgendamento" rows="3"></textarea>
                                 </div>
 
 
@@ -186,6 +192,8 @@ function NovoAgendamentoProd() {
                                 <label className="form-check-label" for="save-info">Save this information for next time</label>
                             </div>
 
+
+
                             <hr className="my-4" />
 
 
@@ -194,7 +202,7 @@ function NovoAgendamentoProd() {
 
 
 
-                        
+
                         </div>
                     </div>
                 </main>
@@ -235,20 +243,30 @@ function pegaDados() {
     let dataNascimento = document.getElementById('DatadeNascimento').value;
     let telefonePessoa = document.getElementById('Telefone').value;
     let grupoPrioritario = document.getElementById('gropoPrioritario').value;
-    let endereco = 'Logradouro/Nome: ' +document.getElementById('Logradouro').value + ' Bairro/Distrito: ' + document.getElementById('Bairro').value + ' Localidade/UF: ' + document.getElementById('Localidade').value + ' CEP: ' + document.getElementById('CEP').value;
+    let endereco = 'Logradouro/Nome: ' + document.getElementById('Logradouro').value + ' Bairro/Distrito: ' + document.getElementById('Bairro').value + ' Localidade/UF: ' + document.getElementById('Localidade').value + ' CEP: ' + document.getElementById('CEP').value;
     let email = document.getElementById('email').value;
+    let unidadeID = document.getElementById('unidadeID').value;
+    let dataAgendamento = document.getElementById('DataAgendamento').value;
+    let necessidadesEspeciais = document.getElementById('necessidadesEspeciais').value;
+    let observacoesAgendamento = document.getElementById('observacoesAgendamento').value;
 
+    
 
     var data = {
         "nome_pessoa": nomePessoa,
         "cpf_pessoa": cpfPessoa,
         "data_nascimento": dataNascimento,
         "telefone_pessoa": telefonePessoa,
-        "grupo_prioritario": grupoPrioritario,
         "endereço_pessoa": endereco,
-        "email_pessoa": email
-    }
+        "email_pessoa": email,
+        "grupo_prioritario": grupoPrioritario,
+         "id_unidade": parseInt(unidadeID),
+        "data_hora_agendamento": dataAgendamento,
+        "necessidades_especiais": necessidadesEspeciais,
+        "observacoes_agendamento": observacoesAgendamento
 
+    }
+console.log(data)
     return data;
 }
 

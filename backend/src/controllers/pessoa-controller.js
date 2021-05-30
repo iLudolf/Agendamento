@@ -1,4 +1,6 @@
 const pessoaModel = require('../models/pessoa-model');
+const agendamentoModel = require('../models/agendamento-model');
+
 
 exports.adicionarPessoa = async (req, res) => {
     const pessoa = req.body;
@@ -25,7 +27,17 @@ exports.adicionarPessoa = async (req, res) => {
             grupo_prioritario: pessoa.grupo_prioritario,
             endereço_pessoa: pessoa.endereço_pessoa,
             email_pessoa: pessoa.email_pessoa
+        });   
+        
+        const test = await agendamentoModel.create({
+            id_pessoa: pessoaExiste.id, 
+            id_unidade: pessoa.id_unidade,
+            data_hora_agendamento: pessoa.data_hora_agendamento,
+            necessidades_especiais: pessoa.necessidades_especiais,
+            observacoes_agendamento: pessoa.necessidades_especiais
+           
         });
+
         res.status(200).json({
             status: 'ok',
             resultado: pessoaExiste
@@ -143,3 +155,6 @@ exports.removerPessoa = async (req, res) => {
     }
 
 }
+
+
+
