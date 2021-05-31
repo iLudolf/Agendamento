@@ -1,13 +1,13 @@
 import './styles.css';
 
-import NavbarProd from '../NavbarProd';
+import NavbarDev from '../NavbarDev';
 
 
 function NovaUnidadeProd() {
 
     return (
         <>
-        <NavbarProd />
+        <NavbarDev />
             <div className="container">
                 <main>
                     <div className="py-5 text-center">
@@ -111,7 +111,7 @@ function NovaUnidadeProd() {
 
 const enviarDados = async () => {
 
-    const API_URL = `http://localhost:3001/pg/unidades/`;
+    const API_URL = `http://localhost:3001/mg/unidades/`;
     const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
@@ -121,7 +121,7 @@ const enviarDados = async () => {
         body: JSON.stringify(pegaDados())
     });
     const data = await response.json();
-    alert(data.resultado);
+    alert(data.message);
 }
 
 
@@ -140,7 +140,7 @@ function pegaDados() {
     var data = {
         "nome_unidade": nomeUnidade,
         "descricao_unidade": descricaoUnidade,
-        "endereço_unidade": endereçoUnidade,
+        "endereco_unidade": endereçoUnidade,
         "telefone_unidade": telefoneUnidadee,
         "email_unidade": emailUnidade,        
     }

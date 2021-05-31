@@ -124,7 +124,7 @@ function Production() {
 
 
             <NavbarProd />
-            <div class="b-example-divider"></div>
+            <div class="p-example-divider"></div>
             <div className="centralizar-conteudo">
                 <div className="col-lg-10 mx-auto p-3 py-md-5">
                     <div id="internaCabecalho" class="input-group ">
@@ -194,7 +194,7 @@ function Production() {
                     </div>
                 </div>
             </div>
-            <div class="b-example-divider mb-0"></div>
+            <div class="p-example-divider mb-0"></div>
 
             <div className="centralizar-conteudo">
                 <div className="col-lg-10 mx-auto p-3 py-md-5">
@@ -260,7 +260,7 @@ function Production() {
                     </div>
                 </div>
             </div>
-            <div class="b-example-divider mb-0"></div>
+            <div class="p-example-divider mb-0"></div>
 
             <div className="centralizar-conteudo">
                 <div className="col-lg-10 mx-auto p-3 py-md-5">
@@ -327,7 +327,7 @@ function Production() {
                     </div>
                 </div>
             </div>
-            <div class="b-example-divider mb-0"></div>
+            <div class="p-example-divider mb-0"></div>
         </>
     );
 }

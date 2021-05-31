@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 
-import NavbarProd from '../NavbarProd';
+import NavbarDev from '../NavbarDev';
 
 function NovoAgendamentoProd() {
 
@@ -39,7 +39,7 @@ function NovoAgendamentoProd() {
 
     return (
         <>
-            <NavbarProd />
+            <NavbarDev />
             <div className="container">
                 <main>
                     <div className="py-5 text-center">

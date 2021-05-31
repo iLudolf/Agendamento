@@ -5,7 +5,7 @@ const pessoaSchema = mongoose.Schema({
         type: mongoose.Schema.Types.String,
         required: true
     },
-    cpf:{
+    cpf_pessoa:{
         type: mongoose.Schema.Types.String,
         required: true
     },
@@ -32,6 +32,10 @@ const pessoaSchema = mongoose.Schema({
     data_alteracao: {
         type: mongoose.Schema.Types.Date,
         default: null
+    },
+    grupo_prioritario: {
+        type: mongoose.Schema.Types.Boolean,
+        equired: true
     }
 });
 

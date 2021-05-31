@@ -32,7 +32,7 @@ exports.adicionarUnidade = (req, res) => {
 
         let unidade = new unidadeSaudeModel();
         unidade.nome_unidade = req.body.nome_unidade;
-        unidade.descricao = req.body.descricao;
+        unidade.descricao_unidade = req.body.descricao_unidade;
         unidade.endereco_unidade = req.body.endereco_unidade;
         unidade.telefone_unidade = req.body.telefone_unidade;
         unidade.email_unidade = req.body.email_unidade;
@@ -104,7 +104,7 @@ exports.atualizarUnidade = (req, res) => {
             });
         }else{
             unidades.nome_unidade = req.body.nome_unidade;
-            unidades.descricao = req.body.descricao;
+            unidade.descricao_unidade = req.body.descricao_unidade;
             unidades.endereco_unidade = req.body.endereco_unidade;
             unidades.telefone_unidade = req.body.telefone_unidade;
             unidades.email_unidade = req.body.email_unidade;

@@ -27,11 +27,11 @@ function Routers() {
           <Route  path="/production" component={Production} />
           <Route  path="/development" component={Development} />
 
-          <Route  path="/novo-agendamento-production" component={NovoAgendamentoProd} />
-          <Route  path="/nova-Unidade-production" component={NovaUnidadeProd} />
+          <Route  path="/agendamento-production" component={NovoAgendamentoProd} />
+          <Route  path="/unidade-production" component={NovaUnidadeProd} />
 
-          <Route  path="/novo-agendamento-development" component={NovoAgendamentoDev} />
-          <Route  path="/nova-Unidade-development" component={NovaUnidadeDev} />
+          <Route  path="/agendamento-development" component={NovoAgendamentoDev} />
+          <Route  path="/unidade-development" component={NovaUnidadeDev} />
 
           <Route  path="/test" component={Test} />              
           {/* <Route path="*" component={NotFoundRoute} />          */}

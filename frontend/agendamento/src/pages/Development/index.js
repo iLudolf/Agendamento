@@ -57,7 +57,7 @@ function Production() {
 
 
     const loadDadosUnidades = async () => {
-        const API_URL = `http://localhost:3001/pg/unidades/`;
+        const API_URL = `http://localhost:3001/mg/unidades/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -66,7 +66,7 @@ function Production() {
             }
         });
         const data = await response.json();
-        setUnidades(data.Unidades);
+        setUnidades(data.message);
         // console.log(data.Pessoas);
     }
 
@@ -74,13 +74,13 @@ function Production() {
         var dadosUnidades = unidades.map(function (registros) {
             const nome = "unidades";
 
-            let dados = registros.id;
+            let dados = registros._id;
             return (
-                <tr key={registros.id}>                 
+                <tr key={registros._id}>                 
 
                     <td>{registros.nome_unidade}</td>
                     <td>{registros.descricao_unidade}</td>
-                    <td>{registros.endereço_unidade}</td>
+                    <td>{registros.endereco_unidade}</td>
                     <td>{registros.telefone_unidade}</td>
                     <td>{registros.email_unidade}</td>
                 </tr>
@@ -124,7 +124,7 @@ function Production() {
 
 
             <NavbarDev />
-            <div class="b-example-divider"></div>
+            <div class="d-example-divider"></div>
             <div className="centralizar-conteudo">
                 <div className="col-lg-10 mx-auto p-3 py-md-5">
                     <div id="internaCabecalho" class="input-group ">
@@ -194,7 +194,7 @@ function Production() {
                     </div>
                 </div>
             </div>
-            <div class="b-example-divider mb-0"></div>
+            <div class="d-example-divider mb-0"></div>
 
             <div className="centralizar-conteudo">
                 <div className="col-lg-10 mx-auto p-3 py-md-5">
@@ -260,7 +260,7 @@ function Production() {
                     </div>
                 </div>
             </div>
-            <div class="b-example-divider mb-0"></div>
+            <div class="d-example-divider mb-0"></div>
 
             <div className="centralizar-conteudo">
                 <div className="col-lg-10 mx-auto p-3 py-md-5">
@@ -327,7 +327,7 @@ function Production() {
                     </div>
                 </div>
             </div>
-            <div class="b-example-divider mb-0"></div>
+            <div class="d-example-divider mb-0"></div>
         </>
     );
 }

@@ -5,7 +5,7 @@ const unidadeSchema = mongoose.Schema({
         type: mongoose.Schema.Types.String,
         required: true
     },
-    descricao: {
+    descricao_unidade: {
         type: mongoose.Schema.Types.String,
         required: true
     },
@@ -23,7 +23,7 @@ const unidadeSchema = mongoose.Schema({
     },
     lat_long: {
         type: mongoose.Schema.Types.String,
-        required: true
+        required: false
     },
     data_alteracao: {
         type: mongoose.Schema.Types.Date,
