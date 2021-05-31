@@ -35,7 +35,7 @@ const pessoaSchema = mongoose.Schema({
     }
 });
 
-let Pessoa = module.exports = mongoose.model('pessoa', pessoaSchema);
+let Pessoa = module.exports = mongoose.model('pessoas', pessoaSchema);
 
 module.exports.get = function(callback, limit){
     Pessoa.find(callback).limit(limit);

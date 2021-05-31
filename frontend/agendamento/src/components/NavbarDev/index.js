@@ -20,8 +20,8 @@ function NavbarDev() {
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false">Aplicativos</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown09">
-                                <li><a class="dropdown-item" href="#">Novo Agendamentos</a></li>                              
-                                <li><a class="dropdown-item" href="#">Cadastrar Nova Unidades</a></li>
+                                <li><a class="dropdown-item" href="/novo-agendamento-development">Novo Agendamentos</a></li>                              
+                                <li><a class="dropdown-item" href="/nova-Unidade-development">Cadastrar Nova Unidades</a></li>
                                
                             </ul>
                         </li>

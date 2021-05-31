@@ -27,7 +27,7 @@ function Home() {
                 <h2>Ambiente de Desenvolvimento</h2>
                 <br/><p>Banco de dados <b>Mongodb </b> no Atlas Database</p><br/>
                 <p>Objetivo do ambiente de desenvolvimento  é usar uma base de dados NoSQL (Mongodb), junto com o Mongoose. Foi desenvolvido as rotas para a API, nesse ambiente é possível e realizar transações em um NoSQL (Non-Relational Database), todo ambiente de desenvolvimento foi criado para uso e teste do Mongodb em um ambiente cloud (Atlas Database).</p>
-                <a class="btn btn-outline-dark" href="/production" type="button">Abrir</a>
+                <a class="btn btn-outline-dark" href="/development" type="button">Abrir</a>
               </div>
             </div>
           </div>

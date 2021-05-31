@@ -1,10 +1,10 @@
-//Production
+//Development
 
 import React, { useState, useEffect } from 'react';
 
 import './styles.css';
 
-import NavbarProd from '../../components/NavbarProd';
+import NavbarDev from '../../components/NavbarDev';
 
 
 
@@ -24,7 +24,7 @@ function Production() {
     }, []);
 
     const loadDadosPessoas = async () => {
-        const API_URL = `http://localhost:3001/pg/pessoas/`;
+        const API_URL = `http://localhost:3001/mg/pessoas/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -33,7 +33,7 @@ function Production() {
             }
         });
         const data = await response.json();
-        setPessoa(data.Pessoas);
+        setPessoa(data.message);
         // console.log(data.Pessoas);
     }
 
@@ -42,13 +42,13 @@ function Production() {
         var dadosPessoas = pessoa.map(function (registros) {
             const nome = "pessoas";
             return (
-                <tr key={registros.id}>                    
+                <tr key={registros._id}>                    
                     <td>{registros.nome_pessoa}</td>
-                    <td>{registros.cpf_pessoa}</td>
+                    <td>{registros.cpf}</td>
                     <td>{registros.data_nascimento}</td>
                     <td>{registros.telefone_pessoa}</td>
                     <td>{registros.grupo_prioritario ? 'Sim' : 'Não'}</td>
-                    <td>{registros.endereço_pessoa}</td>
+                    <td>{registros.endereco_pessoa}</td>
                     <td>{registros.email_pessoa}</td>
                 </tr>
             ); //retorna o registro 
@@ -123,7 +123,7 @@ function Production() {
         <>
 
 
-            <NavbarProd />
+            <NavbarDev />
             <div class="b-example-divider"></div>
             <div className="centralizar-conteudo">
                 <div className="col-lg-10 mx-auto p-3 py-md-5">

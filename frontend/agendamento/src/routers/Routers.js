@@ -12,7 +12,11 @@ import Test from '../pages/Test';
 import NovoAgendamentoProd from '../components/NovoAgendamentoProd';
 import NovaUnidadeProd from '../components/NovaUnidadeProd';
 
+import NovoAgendamentoDev from '../components/NovoAgendamentoDev';
+import NovaUnidadeDev from '../components/NovaUnidadeDev';
+
 import Production from '../pages/Production';
+import Development from '../pages/Development';
 
 function Routers() {
   return (
@@ -21,9 +25,13 @@ function Routers() {
         <Switch>
           <Route exact path="/" component={Home} />      
           <Route  path="/production" component={Production} />
+          <Route  path="/development" component={Development} />
 
           <Route  path="/novo-agendamento-production" component={NovoAgendamentoProd} />
           <Route  path="/nova-Unidade-production" component={NovaUnidadeProd} />
+
+          <Route  path="/novo-agendamento-development" component={NovoAgendamentoDev} />
+          <Route  path="/nova-Unidade-development" component={NovaUnidadeDev} />
 
           <Route  path="/test" component={Test} />              
           {/* <Route path="*" component={NotFoundRoute} />          */}

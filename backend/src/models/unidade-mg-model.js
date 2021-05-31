@@ -31,7 +31,7 @@ const unidadeSchema = mongoose.Schema({
     }
 });
 
-let Unidade = module.exports = mongoose.model('unidade', unidadeSchema);
+let Unidade = module.exports = mongoose.model('unidades', unidadeSchema);
 
 module.exports.get = function(callback, limit){
     Unidade.find(callback).limit(limit);

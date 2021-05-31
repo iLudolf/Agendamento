@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const agendamentoSchema = mongoose.Schema({
+    
     data_hora_agendamento: {
         type: mongoose.Schema.Types.Date,
         required: true
@@ -19,7 +20,7 @@ const agendamentoSchema = mongoose.Schema({
     }
 });
 
-let Agendamento = module.exports = mongoose.model('agendamento', agendamentoSchema);
+let Agendamento = module.exports = mongoose.model('agendamentos', agendamentoSchema);
 
 module.exports.get = function(callback, limit){
     Agendamento.find(callback).limit(limit);
