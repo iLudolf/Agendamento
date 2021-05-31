@@ -12,7 +12,7 @@ function NovoAgendamentoProd() {
     }, []);
 
     const loadUnidades = async () => {
-        const API_URL = `http://localhost:3001/pg/unidades/`;
+        const API_URL = `http://localhost:3001/mg/unidades/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -21,7 +21,7 @@ function NovoAgendamentoProd() {
             }
         });
         const data = await response.json();
-        setunidades(data.Unidades);
+        setunidades(data.message);
     }
 
     if(unidades != undefined){
