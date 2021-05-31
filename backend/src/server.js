@@ -15,24 +15,18 @@ const hostname = 'localhost';
 (async () => await syncPG())() //Sincroniza o Postgres
 
 
-// const mongoose = require('mongoose');
 
-// mongoose.connect(`mongodb+srv://root:dCblujdTceylQaMx@cluster0.c5jyf.mongodb.net/dev?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true});
-
-// const db = mongoose.connection;
-
-// db.on('error', console.error.bind(console, 'Erro ao conectar no Mongo'));
-// db.once('open', function() {
-//     console.log("Banco de Dados Mongo conectado com sucesso");
-// });
-
-
-//Rotas
 const defaultRoutes = require('./routes/default-routes');
-const pessoaRoutes = require('./routes/pessoa-routes');
-const unidadeRoutes = require('./routes/unidade-routes');
-const agendamentoRoutes = require('./routes/agendamento-routes');
 
+// Postgres
+const pessoaPgRoutes = require('./routes/pessoa-pg-routes');
+const unidadePgRoutes = require('./routes/unidade-pg-routes');
+const agendamentoPgRoutes = require('./routes/agendamento-pg-routes');
+
+// MongoDB
+const pessoaMgRoutes = require('./routes/pessoas-mg-routes');
+const unidadeMgRoutes = require('./routes/unida-mg-routes');
+const agendamentoMgRoutes = require('./routes/agendamento-mg-routes');
 
 //Parsing do conteúdo das requisições 
 app.use(express.urlencoded({
@@ -42,11 +36,18 @@ app.use(express.urlencoded({
 app.use(express.json());
 app.use(cors());
 
-
+//Rotas 
 app.use('/', defaultRoutes);
-app.use('/pg/pessoas/', pessoaRoutes);
-app.use('/pg/unidades/', unidadeRoutes);
-app.use('/pg/agendamentos/', agendamentoRoutes);
+
+//Rotas - Postgres
+app.use('/pg/pessoas/', pessoaPgRoutes);
+app.use('/pg/unidades/', unidadePgRoutes);
+app.use('/pg/agendamentos/', agendamentoPgRoutes);
+
+//Rotas - MongoDB
+app.use('/mg/pessoas/', pessoaMgRoutes);
+app.use('/mg/unidades/', unidadeMgRoutes);
+app.use('/mg/agendamentos/', agendamentoMgRoutes);
 
 app.listen(port, hostname, () => {
   console.log(`Servidor rodando no endereço: http://${hostname}:${port}\n\n`);

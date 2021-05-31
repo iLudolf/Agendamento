@@ -1,6 +1,6 @@
 let router = require('express').Router();
 
-const pessoaController = require('../controllers/pessoa-controller');
+const pessoaController = require('../controllers/pessoa-pg-controller');
 
 router.post('/', pessoaController.adicionarPessoa);
 

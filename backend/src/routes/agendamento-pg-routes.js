@@ -1,6 +1,6 @@
 let router = require('express').Router();
 
-const agendamentoController = require('../controllers/agendamento-controller');
+const agendamentoController = require('../controllers/agendamento-pg-controller');
 
 // router.post('/', agendamentoController.adicionarAgendamento);
 
