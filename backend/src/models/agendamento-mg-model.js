@@ -2,20 +2,20 @@ const mongoose = require('mongoose');
 
 const agendamentoSchema = mongoose.Schema({
     id_pessoa: {
-        type: mongoose.Schema.Types.Number,
-        required: true
+        type: mongoose.Schema.Types.String,
+        required: false
     },
     id_unidade: {
-        type: mongoose.Schema.Types.Number,
-        required: true
+        type: mongoose.Schema.Types.String,
+        required: false
     },
     data_hora_agendamento: {
         type: mongoose.Schema.Types.Date,
-        required: true
+        required: false
     },
     necessidades_especiais: {
         type: mongoose.Schema.Types.Boolean,
-        required: true
+        required: false
     },
     observacoes_agendamento: {
         type: mongoose.Schema.Types.String,

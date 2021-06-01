@@ -1,39 +1,50 @@
 const agendamentoModel = require('../models/agendamento-model');
 
-// exports.adicionarAgendamento = async (req, res) => {
-//     const unidade = req.body;
+exports.adicionarAgendamentos = (req, res) => {
+    agendamentoModel.find((error, agendamentos) => {
+        if (error) {
+            console.log("Não foi possível registrar este agendamento");
+            res.json({
+                status: 'erro',
+                message: 'Não foi possível inserir o novo agendamento'
+            });
+        }
+        for (let i = 0; i < agendamentos.length; i++) {
 
-//     const unidadeExiste = await agendamentoModel.findAll({
-//         where: {
-//             email_unidade: unidade.email_unidade
-//         }
-//     });
+            if (req.body.data_hora_agendamento == agendamentos[i].data_hora_agendamento) {
+                res.json({
+                    status: 'erro',
+                    message: `O agendamento com o horário ${req.body.data_hora_agendamento} já está preenchido`
+                });
+            }
+            return;
+        }
+        let agendamento = new agendamentoModel();
+        // agendamento.id_pessoa = pessoa._id;
+        // agendamento.id_unidade = parseInt(req.body.id_unidade);
+        agendamento.data_hora_agendamento = req.body.data_hora_agendamento;
+        agendamento.necessidades_especiais = req.body.necessidades_especiais;
+        agendamento.observacoes_agendamento = req.body.observacoes_agendamento;
+        agendamento.data_alteracao = Date();
 
-
-
-//     if (unidadeExiste.length > 0) {
-//         res.status(403).json({
-//             status: "Erro",
-//             resultado: `A unidade com e-mail: ${unidade.email_unidade} já está cadastrado no Sistema!` 
-//         })
-//     } else {
-//         const unidadeExiste = await agendamentoModel.create({
-//             nome_unidade: unidade.nome_unidade,
-//             descricao_unidade: unidade.descricao_unidade,
-//             endereço_unidade: unidade.endereço_unidade,
-//             telefone_unidade: unidade.telefone_unidade,
-//             email_unidade: unidade.email_unidade,
-//             // endereço_unidade: pessoa.endereço_unidade,            
-//         });
-//         res.status(200).json({
-//             status: 'ok',
-//             resultado: 'Unidade criada com sucesso!'
-//         })
-//     }
-// }
+        agendamento.save((error) => {
+            if (error) {
+                res.send({
+                    status: 'erro',
+                    message: 'Não foi possível inserir o agendamento'
+                });
+            } else {
+                res.send({
+                    status: 'ok',
+                    message: `O agendamento de data e hora ${agendamento.data_hora_agendamento} foi inserido com sucesso`
+                });
+            }
+        });
+    });
+}
 
 exports.listarAgendamento = async (req, res) => {
-   
+
     try {
         const agendamento = await agendamentoModel.findAll();
         res.setHeader('Access-Control-Allow-Origin', '*');
@@ -58,7 +69,7 @@ exports.listarAgendamentoPorID = async (req, res) => {
         if (agendamento) {
             res.status(200).json({
                 status: "ok",
-                message: "usuário encontrado com sucesso!",              
+                message: "usuário encontrado com sucesso!",
             })
         } else {
             res.status(406).json({

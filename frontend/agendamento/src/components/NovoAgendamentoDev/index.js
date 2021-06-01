@@ -162,8 +162,8 @@ function NovoAgendamentoProd() {
                                     <label for="country" className="form-label">Gropo Prioritario</label>
                                     <select className="form-select" id="gropoPrioritario" required>
                                         <option >Escolher...</option>
-                                        <option value="true">Sim</option>
-                                        <option value="false">Não</option>
+                                        <option value={true}>Sim</option>
+                                        <option value={false}>Não</option>
                                     </select>
                                     <div className="invalid-feedback">
                                         Please select a valid country.
@@ -258,16 +258,16 @@ function pegaDados() {
 
     var data = {
         "nome_pessoa": nomePessoa,
-        "cpf": cpfPessoa,
+        "cpf_pessoa": cpfPessoa,
         "data_nascimento": dataNascimento,
         "telefone_pessoa": telefonePessoa,
         "endereco_pessoa": endereco,
         "email_pessoa": email,
         "grupo_prioritario": grupoPrioritario,
-        //  "id_unidade": parseInt(unidadeID),
-        // "data_hora_agendamento": dataAgendamento,
-        // "necessidades_especiais": necessidadesEspeciais,
-        // "observacoes_agendamento": observacoesAgendamento
+         "id_unidade": unidadeID,
+        "data_hora_agendamento": dataAgendamento,
+        "necessidades_especiais": necessidadesEspeciais,
+        "observacoes_agendamento": observacoesAgendamento
 
     }
 
