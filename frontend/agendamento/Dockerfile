@@ -8,9 +8,17 @@ COPY *.env ./src
 
 COPY ./src ./scr
 
-RUN npm install
+RUN apt-get update && apt-get install -y gnupg2
 
-COPY /build /usr/share/nginx/html
+RUN  apt install curl -y
+
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x 
+
+RUN  apt-get install -y nodejs npm
+
+# RUN npm run build
+
+# COPY /build /usr/share/nginx/html
 
 EXPOSE 80
 
