@@ -1,28 +1,27 @@
-FROM nginx
 
-WORKDIR /app
-
+FROM node:14-alpine AS build
+ 
+WORKDIR /usr/app
+ 
 COPY package*.json ./
+ 
+RUN npm install
+ 
+COPY . . 
+ 
+RUN echo 'REACT_APP_API ="VAR_URL_API"' > .env.production && \
+    npm run build
 
-COPY *.env ./src
-
-COPY ./src ./scr
-
-RUN apt-get update && apt-get install -y gnupg2
-
-RUN  apt install curl -y
-
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x 
-
-RUN  apt-get install -y nodejs npm
-
-# RUN npm run build
-
-# COPY /build /usr/share/nginx/html
+FROM nginx:1.17.6-alpine
+ENV URL_API="http://localhost.org"
+COPY --from=build /usr/app/build/ /usr/share/nginx/html/
+# COPY entrypoint.sh /usr/local/bin/
 
 EXPOSE 80
 
-RUN node -v
-# ENV NODE_ENV="production"
+# ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
+CMD [ "nginx", "-g", "daemon off;"]
 
-# CMD ["npm run build", "./agendamento"]
+
+## Documentação
+# https://somatorio.org/pt-br/post/docker_react_multi_ambiente/

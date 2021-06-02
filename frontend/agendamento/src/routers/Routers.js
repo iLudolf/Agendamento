@@ -23,7 +23,7 @@ function Routers() {
     <div>
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />      
+          <Route  exact path="/" component={Home} />      
           <Route  path="/production" component={Production} />
           <Route  path="/development" component={Development} />
 
