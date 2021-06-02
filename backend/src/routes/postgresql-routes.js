@@ -1,13 +1,13 @@
 let router = require('express').Router();
 
 router.get('/', function (req, res) {
-  res.json(dados);
+  res.json(postgreSQL);
 });
 
 
-const dados = {
-  "Rotas": {
-    "Name": "Todas as rotas",
+const postgreSQL = {
+  "PostgreSQL": {
+    "Name": "Todas as rotas PostgreSQL",
     "Description": "Informações sobre a API - 30/05/2021",
     "Path": "/"
   },

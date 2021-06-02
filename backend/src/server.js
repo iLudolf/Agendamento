@@ -1,3 +1,7 @@
+//Variaveis de ambiente 
+require('dotenv').config({
+  path: ".env"
+});
 
 const express = require('express');
 var cors = require('cors');
@@ -6,17 +10,14 @@ const syncPG = require('./services/conect.postgres').sincronizarPostgres;
 const syncDB = require('./services/conect.mongodb');  //Sincroniza o Mongodb
 const app = express();
 
-
-
-const port = 3001;
-const hostname = 'localhost';
-
+const port = process.env.APP_PORT;
+const hostname = process.env.APP_HOSTNAME;
 
 (async () => await syncPG())() //Sincroniza o Postgres
 
-
-
 const defaultRoutes = require('./routes/default-routes');
+const postgresqlRoutes = require('./routes/postgresql-routes');
+const mongodbRoutes  = require('./routes/mongodb-routes');
 
 // Postgres
 const pessoaPgRoutes = require('./routes/pessoa-pg-routes');
@@ -38,6 +39,8 @@ app.use(cors());
 
 //Rotas 
 app.use('/', defaultRoutes);
+app.use('/postgresql', postgresqlRoutes);
+app.use('/mongodb', mongodbRoutes);
 
 //Rotas - Postgres
 app.use('/pg/pessoas/', pessoaPgRoutes);

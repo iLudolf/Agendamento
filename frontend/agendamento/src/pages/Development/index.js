@@ -89,7 +89,7 @@ function Production() {
     }
 
     const loadDadosAgendamento = async () => {
-        const API_URL = `http://localhost:3001/pg/agendamentos/`;
+        const API_URL = `http://localhost:3001/mg/agendamentos/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -98,7 +98,7 @@ function Production() {
             }
         });
         const data = await response.json();
-        setAgendamento(data.Agendamentos);
+        setAgendamento(data.message);
         // console.log(data.Pessoas);
     }
 
@@ -111,7 +111,7 @@ function Production() {
                     <td>{registros.id_unidade}</td>
                     <td>{registros.data_hora_agendamento}</td>
                     <td>{registros.necessidades_especiais ? "Sim" : "Não"}</td>
-                    <td>{registros.observacoes_agendamento ? "Sim" : "Não"}</td>
+                    <td>{registros.observacoes_agendamento }</td>
                 </tr>
             ); //retorna o registro 
         });
