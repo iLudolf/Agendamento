@@ -24,7 +24,7 @@ const pessoaModel = postgres.define('pessoas', {
         type: Sequelize.STRING,
         allowNull: false
     },   
-    endereço_pessoa: {
+    endereco_pessoa: {
         type: Sequelize.STRING,
         allowNull: false
     },  

@@ -24,7 +24,7 @@ exports.adicionarPessoas = async (req, res) => {
         }
 
         //Pessoa
-        let pessoa = new  pessoasModel();
+        let pessoa = new pessoasModel();
         pessoa.nome_pessoa = parseInt(req.body.nome_pessoa);
         pessoa.cpf_pessoa = req.body.cpf_pessoa;
         pessoa.data_nascimento = req.body.data_nascimento;
@@ -32,11 +32,10 @@ exports.adicionarPessoas = async (req, res) => {
         pessoa.grupo_prioritario = req.body.grupo_prioritario;
         pessoa.endereco_pessoa = req.body.endereco_pessoa;
         pessoa.email_pessoa = req.body.email_pessoa;
-        ID = pessoa._id;
-        console.log( 'Pessoa:' +pessoa);
+        console.log('Pessoa:' + pessoa);
 
         //Agendamento     
-        let agendamento =  new agendamentoModel();
+        let agendamento = new agendamentoModel();
         agendamento.id_pessoa = pessoa._id;
         agendamento.id_unidade = req.body.id_unidade;
         agendamento.data_hora_agendamento = req.body.data_hora_agendamento;
@@ -44,13 +43,30 @@ exports.adicionarPessoas = async (req, res) => {
         agendamento.observacoes_agendamento = req.body.observacoes_agendamento;
         agendamento.data_alteracao = Date();
 
-        console.log('agendamento:' +agendamento)
+        console.log('agendamento:' + agendamento)
 
-        pessoa, agendamento.save((error) => {
+        pessoa.save((error) => {
             if (error) {
-                console.log(`\n\nErro: ${error}`)
+                res.json({
+                    status: 'erro',
+                    message: `Não foi possivel realizar o agendamento! \n`
+                });
             } else {
-                console.log(`Casdastro realizado com sucesso ${req.body.nome_pessoa}`);
+                // console.log(`Casdastro realizado com sucesso ${req.body.nome_pessoa}`);
+                agendamento.save((error) => {
+                    if (error) {
+                        res.json({
+                            status: 'erro',
+                            message: `Não foi possivel realizar o agendamento! \n`
+                        });
+                    } else {
+                        // console.log(`Casdastro realizado com sucesso ${req.body.nome_pessoa}`);
+                        res.json({
+                            status: 'ok',
+                            message: `Agendamento realizado com sucesso! \n`
+                        });
+                    }
+                });
             }
         });
 

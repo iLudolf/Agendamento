@@ -25,7 +25,7 @@ exports.adicionarPessoa = async (req, res) => {
             data_nascimento: pessoa.data_nascimento,
             telefone_pessoa: pessoa.telefone_pessoa,
             grupo_prioritario: pessoa.grupo_prioritario,
-            endereço_pessoa: pessoa.endereço_pessoa,
+            endereco_pessoa: pessoa.endereco_pessoa,
             email_pessoa: pessoa.email_pessoa
         });   
         

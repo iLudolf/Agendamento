@@ -261,7 +261,7 @@ function pegaDados() {
         "cpf_pessoa": cpfPessoa,
         "data_nascimento": dataNascimento,
         "telefone_pessoa": telefonePessoa,
-        "endereço_pessoa": endereco,
+        "endereco_pessoa": endereco,
         "email_pessoa": email,
         "grupo_prioritario": grupoPrioritario,
          "id_unidade": parseInt(unidadeID),

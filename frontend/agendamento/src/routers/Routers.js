@@ -34,7 +34,7 @@ function Routers() {
           <Route  path="/unidade-development" component={NovaUnidadeDev} />
 
           <Route  path="/test" component={Test} />              
-          {/* <Route path="*" component={NotFoundRoute} />          */}
+          <Route path="*" component={Production} />         
         </Switch>
       </Router>
     </div>

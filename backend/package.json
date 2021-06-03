@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Backend do projeto Intranet, desenvolvido para empresa Luvep\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C Volvo. By: Israel Ludolf",
+  "description": "Backend do projeto agendamento. By: Israel Ludolf",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/iLudolf/Intranet/issues"
   },
-  "homepage": "https://github.com/iLudolf/Intranet#readme",
+  "homepage": ".",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

@@ -48,7 +48,7 @@ function Production() {
                     <td>{registros.data_nascimento}</td>
                     <td>{registros.telefone_pessoa}</td>
                     <td>{registros.grupo_prioritario ? 'Sim' : 'Não'}</td>
-                    <td>{registros.endereço_pessoa}</td>
+                    <td>{registros.endereco_pessoa}</td>
                     <td>{registros.email_pessoa}</td>
                 </tr>
             ); //retorna o registro 

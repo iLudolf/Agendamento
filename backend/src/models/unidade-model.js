@@ -16,7 +16,7 @@ const unidadeModel = postgres.define('unidades', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    endereço_unidade: {
+    endereco_unidade: {
         type: Sequelize.STRING,
         allowNull: false
     },
