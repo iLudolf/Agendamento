@@ -6,7 +6,7 @@ exports.adicionarPessoas = async (req, res) => {
 
     pessoasModel.find((error, pessoas) => {
         if (error) {
-            console.log("Não foi possível recuperar as pessoas");
+            // console.log("Não foi possível recuperar as pessoas");
             res.json({
                 status: 'erro',
                 message: "Não foi possível recuperar as pessoas"
@@ -25,14 +25,14 @@ exports.adicionarPessoas = async (req, res) => {
 
         //Pessoa
         let pessoa = new pessoasModel();
-        pessoa.nome_pessoa = parseInt(req.body.nome_pessoa);
+        pessoa.nome_pessoa = req.body.nome_pessoa;
         pessoa.cpf_pessoa = req.body.cpf_pessoa;
         pessoa.data_nascimento = req.body.data_nascimento;
         pessoa.telefone_pessoa = req.body.telefone_pessoa;
         pessoa.grupo_prioritario = req.body.grupo_prioritario;
         pessoa.endereco_pessoa = req.body.endereco_pessoa;
         pessoa.email_pessoa = req.body.email_pessoa;
-        console.log('Pessoa:' + pessoa);
+        // console.log('Pessoa:' + pessoa);
 
         //Agendamento     
         let agendamento = new agendamentoModel();
@@ -43,7 +43,7 @@ exports.adicionarPessoas = async (req, res) => {
         agendamento.observacoes_agendamento = req.body.observacoes_agendamento;
         agendamento.data_alteracao = Date();
 
-        console.log('agendamento:' + agendamento)
+        // console.log('agendamento:' + agendamento)
 
         pessoa.save((error) => {
             if (error) {
@@ -79,7 +79,7 @@ exports.adicionarPessoas = async (req, res) => {
 exports.listarPessoas = async (req, res) => {
     pessoasModel.find((error, pessoas) => {
         if (error) {
-            console.log("Não foi possível listar as pessoas");
+            // console.log("Não foi possível listar as pessoas");
             res.json({
                 status: 'erro',
                 message: 'Não foi possível listar as pessoas'
@@ -99,13 +99,13 @@ exports.listarPessoasPorId = async (req, res) => {
 
     pessoasModel.findById(id_pessoa, (error, pessoas) => {
         if (error || !pessoas) {
-            console.log(`Não foi possível encontrar a pessoa ${id_pessoa}`);
+            // console.log(`Não foi possível encontrar a pessoa ${id_pessoa}`);
             res.json({
                 status: 'erro',
                 message: `Não foi possível encontrar a pessoa ${id_pessoa}`
             });
         } else {
-            console.log(`Pessoa de id ${id_pessoa} encontrado na base de dados`);
+            // console.log(`Pessoa de id ${id_pessoa} encontrado na base de dados`);
             res.json({
                 status: 'ok',
                 message: pessoas
@@ -120,7 +120,7 @@ exports.atualizarPessoas = async (req, res) => {
 
     pessoasModel.findById(id_pessoa, (error, pessoas) => {
         if (error || !pessoas) {
-            console.log(`Não foi possível atualizar a pessoa com o id ${id_pessoa}`);
+            // console.log(`Não foi possível atualizar a pessoa com o id ${id_pessoa}`);
             res.json({
                 status: 'erro',
                 message: `Não foi possível atualizar a pessoa com o id ${id_pessoa}`

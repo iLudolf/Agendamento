@@ -140,7 +140,7 @@ function pegaDados() {
     var data = {
         "nome_unidade": nomeUnidade,
         "descricao_unidade": descricaoUnidade,
-        "endereço_unidade": endereçoUnidade,
+        "endereco_unidade": endereçoUnidade,
         "telefone_unidade": telefoneUnidadee,
         "email_unidade": emailUnidade,        
     }

@@ -4,7 +4,7 @@ const agendamentoModel = require('../models/agendamento-model');
 
 exports.adicionarPessoa = async (req, res) => {
     const pessoa = req.body;
-
+    
     const pessoaExiste = await pessoaModel.findAll({
         where: {
             cpf_pessoa: pessoa.cpf_pessoa
@@ -19,7 +19,7 @@ exports.adicionarPessoa = async (req, res) => {
             message: "Usuário já está cadastrado no Sistema!"
         })
     } else {
-        const pessoaExiste = await pessoaModel.create({
+        const novaPessoa = await pessoaModel.create({
             nome_pessoa: pessoa.nome_pessoa,
             cpf_pessoa: pessoa.cpf_pessoa,
             data_nascimento: pessoa.data_nascimento,
@@ -29,9 +29,9 @@ exports.adicionarPessoa = async (req, res) => {
             email_pessoa: pessoa.email_pessoa
         });   
         
-        const test = await agendamentoModel.create({
-            id_pessoa: pessoaExiste.id, 
-            id_unidade: pessoa.id_unidade,
+        const agendamento = await agendamentoModel.create({
+            id_pessoa: novaPessoa.id, 
+            id_unidade: pessoa.id_unidade, 
             data_hora_agendamento: pessoa.data_hora_agendamento,
             necessidades_especiais: pessoa.necessidades_especiais,
             observacoes_agendamento: pessoa.necessidades_especiais

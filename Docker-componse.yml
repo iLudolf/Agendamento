@@ -3,7 +3,7 @@ version: '3.1'
 services:
   backend:
     build: backend/
-    container_name: Backend
+    container_name: backend
     restart: always
     ports:
       - 3001:3001   
@@ -27,7 +27,7 @@ services:
       - 9000:9000
     networks: 
       - network 
-    depends_on: [backend]       
+    depends_on: [backend, frontend]       
 networks:
   network:
     driver: bridge 

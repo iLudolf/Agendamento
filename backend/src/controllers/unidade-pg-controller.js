@@ -23,7 +23,7 @@ exports.adicionarUnidade = async (req, res) => {
             endereco_unidade: unidade.endereco_unidade,
             telefone_unidade: unidade.telefone_unidade,
             email_unidade: unidade.email_unidade,
-            endereco_unidade: pessoa.endereco_unidade,            
+            endereco_unidade: unidade.endereco_unidade,            
         });
         res.status(200).json({
             status: 'ok',
