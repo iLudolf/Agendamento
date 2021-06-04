@@ -111,7 +111,7 @@ function NovaUnidadeProd() {
 
 const enviarDados = async () => {
 
-    const API_URL = `http://localhost:3001/mg/unidades/`;
+    const API_URL = `http://api-agendamento.ddns.net:3001/mg/unidades/`;
     const response = await fetch(API_URL, {
         method: 'POST',
         headers: {

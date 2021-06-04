@@ -24,7 +24,7 @@ function Production() {
     }, []);
 
     const loadDadosPessoas = async () => {
-        const API_URL = `http://localhost:3001/mg/pessoas/`;
+        const API_URL = `http://api-agendamento.ddns.net:3001/mg/pessoas/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -57,7 +57,7 @@ function Production() {
 
 
     const loadDadosUnidades = async () => {
-        const API_URL = `http://localhost:3001/mg/unidades/`;
+        const API_URL = `http://api-agendamento.ddns.net:3001/mg/unidades/`;
         const response = await fetch(API_URL, {
             method: 'GET',
             headers: {
@@ -334,7 +334,7 @@ function Production() {
 
 
 async function deletarRegistro(registro, nome) {
-    const API_URL = `http://localhost:3001/${nome}/${registro}`;
+    const API_URL = `http://api-agendamento.ddns.net:3001/${nome}/${registro}`;
     const response = await fetch(API_URL, {
         method: 'DELETE',
         headers: {
